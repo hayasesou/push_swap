@@ -25,42 +25,42 @@ t_cd_list	*make_circular_doubly(t_ints_info *info)
 	return (list);
 }
 
-int main	(void)
-{
-	t_cd_list	*list;
-	int			*tmp;
-	int			count;
-	t_ints_info	int_info;
+//int main	(void)
+//{
+	//t_cd_list	*list;
+	//int			*tmp;
+	//int			count;
+	//t_ints_info	int_info;
 
-	count = 0;
-	int_info.av_num = 1000;
-	int_info.number = (int *)malloc(sizeof(int) * int_info.av_num);
-	tmp = int_info.number;
-	while (count < int_info.av_num)
-	{
-		*(int_info.number) = count;
-		//printf("[%p]\n",number);
-		// printf("[%d]\n",*number);
-		count++;
-		int_info.number++;
-	}
+	//count = 0;
+	//int_info.av_num = 1000;
+	//int_info.number = (int *)malloc(sizeof(int) * int_info.av_num);
+	//tmp = int_info.number;
+	//while (count < int_info.av_num)
+	//{
+		//*(int_info.number) = count;
+		////printf("[%p]\n",number);
+		//// printf("[%d]\n",*number);
+		//count++;
+		//int_info.number++;
+	//}
 
-	int_info.number = tmp;
-	list = make_circular_doubly(&int_info);
-	int i = 0;
-	while(i < 1000)
-	{
-		printf("[%d]\n", (list->content));
-		list = list->next;
-		i++;
-	}
-	i = 0 ;
-	ft_printf("\n");
-	while(i < 1000)
-	{
-		printf("[%d]\n", (list->content));
-		list = list->prev;
-		i++;
-	}
-	return (0);
-}
+	//int_info.number = tmp;
+	//list = make_circular_doubly(&int_info);
+	//int i = 0;
+	//while(i < 1000)
+	//{
+		//printf("[%d]\n", (list->content));
+		//list = list->next;
+		//i++;
+	//}
+	//i = 0 ;
+	//ft_printf("\n");
+	//while(i < 1000)
+	//{
+		//printf("[%d]\n", (list->content));
+		//list = list->prev;
+		//i++;
+	//}
+	//return (0);
+//}

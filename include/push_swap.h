@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:50:48 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/12 12:23:05 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/09/13 11:22:37 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include <stdlib.h>
 # include "ft_printf.h"
+
+# define NEXT 1
+# define PREV 0
 
 typedef struct t_cd_list
 {
@@ -29,8 +32,12 @@ typedef struct t_ints_info
   int   av_num;
 } t_ints_info;
 
+
+
 void    add_front_doubly(t_cd_list **list, t_cd_list *new);
 t_cd_list *new_doubly(int content);
+t_cd_list	*make_circular_doubly(t_ints_info *info);
 void swap_top_2(t_cd_list **list);
+void	push_x2y(t_cd_list **x, t_cd_list **y);
 
 #endif
