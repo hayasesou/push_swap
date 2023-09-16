@@ -6,14 +6,14 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 14:59:17 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/13 12:22:57 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/09/16 15:56:07 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // (*list) is list which you want you pop
-// return value is ptr of argument pop_x
+// return value is ptr of argument of pop_x
 // ptr of list is next ptr of first argument
 static	t_cd_list	*pop_x(t_cd_list **list)
 {
@@ -31,13 +31,19 @@ static	t_cd_list	*pop_x(t_cd_list **list)
 // ptr of list is x
 static	void	push_x(t_cd_list **list, t_cd_list *x)
 {
-	x->next = (*list)->next;
-	(*list) = (*list)->next;
+	if (*list == NULL)
+	{
+		(*list) = x;
+		(*list)->next = x;
+		(*list)->prev = x;
+		return ;
+	}
+	x->next = (*list);
 	x->prev = (*list)->prev;
 	(*list)->prev = x;
 	(*list) = x->prev;
 	(*list)->next = x;
-	(*list) = (*list)->next;
+	(*list) = x;
 }
 
 //x is top of stack
@@ -47,8 +53,8 @@ void	push_x2y(t_cd_list **x, t_cd_list **y)
 {
 	t_cd_list	*get;
 
-	if ( x == NULL)
-		return;
+	if (*x == NULL)
+		return ;
 	get = pop_x(x);
 	push_x(y, get);
 }

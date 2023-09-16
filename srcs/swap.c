@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 19:08:46 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/14 17:53:33 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/09/16 16:13:21 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static	void	make_tmp_lists(t_cd_list *current, t_cd_list *second, t_cd_list **li
 	(*list) = (*list)->prev;
 }
 
-void	set_ptr(t_cd_list **list, t_cd_list *place, t_cd_list *ptr, int direction)
+static void	set_ptr(t_cd_list **list, t_cd_list *place, t_cd_list *ptr, int direction)
 {
 	(*list) = place;
 	if (direction == NEXT)
@@ -36,7 +36,7 @@ void	swap_top_2(t_cd_list **list)
 	t_cd_list	current;
 	t_cd_list	second;
 
-	if (list == NULL || (*list)->next == (*list))
+	if (*list == NULL || (*list)->next == (*list))
 		return ;
 	make_tmp_lists(&current, &second, list);
 	set_ptr(list, current.prev, current.next, NEXT);
@@ -49,31 +49,6 @@ void	swap_top_2(t_cd_list **list)
 }
 
 
-//void	swap_top_2(t_cd_list **list)
-//{
-	//t_cd_list	*tmp;
-
-	//tmp = new_doubly(1);
-	//tmp->prev = (*list)->prev;
-	//(*list)->prev = (*list)->next;
-	//(*list) = (*list)->next;//3
-	//tmp->next = (*list)->next;
-	//(*list)->prev = tmp->prev;
-	//(*list) = (*list)->prev->next;      //2
-	//(*list)->next = tmp->next;
-	//(*list) = (*list)->next; //4
-	//tmp->next = (*list)->prev;
-	//(*list) = (*list)->prev->prev; //1
-	//tmp->prev = (*list)->next;
-	//(*list)->next = tmp->next;
-	//(*list) = (*list)->next; //3
-	//(*list)->next = tmp->prev;
-	//(*list) = (*list)->next->next;//4
-	//(*list)->prev = tmp->prev;
-	//(*list) = (*list)->prev->prev;//2
-	//free(tmp);
-//}
-
 void	ft_ss(t_cd_list **x, t_cd_list **y)
 {
 	swap_top_2(x);
@@ -81,7 +56,7 @@ void	ft_ss(t_cd_list **x, t_cd_list **y)
 }
 
 
-void	func(t_ints_info *inf,int num)
+static void	func(t_ints_info *inf,int num)
 {
 	int			*tmp;
 	int count = 0;
@@ -96,11 +71,13 @@ void	func(t_ints_info *inf,int num)
 	}
 }
 
-void output(int i, t_cd_list **list)
+static void output(int i, t_cd_list **list)
 {
 	int count;
 	count = 0;
 
+	if (*list == NULL)
+		return ;
 	while (count < i)
 	{
 		ft_printf("[%d]\n",(*list)->content);
@@ -109,22 +86,31 @@ void output(int i, t_cd_list **list)
 	}
 }
 
-//int	main	(void)
-//{
-	//t_cd_list	*list;
-	//t_cd_list	*y;
-	//t_ints_info	int_info1, int_info2;
+int	main	(void)
+{
+	t_cd_list	*list;
+	t_cd_list	*y;
+	t_cd_list	*z;
+	t_ints_info	int_info1, int_info2;
 
-	//func(&int_info1, 1000);
-	//list = make_circular_doubly(&int_info1);
-	//func(&int_info2, 1);
-	//y = make_circular_doubly(&int_info2);
+	func(&int_info1, 1000);
+	list = make_circular_doubly(&int_info1);
+	func(&int_info2, 1);
+	y = make_circular_doubly(&int_info2);
 
-	////push_x2y(&list,&y);
-	////swap_top_2(&y);
-	//ft_ss(&list, &y);
+	swap_top_2(&z);
+	push_x2y(&list,&z);
+	push_x2y(&list,&z);
+	//push_x2y(&list,&z);
+	//push_x2y(&list,&z);
+	//push_x2y(&z,&list);
+	//swap_top_2(&y);
+	//ft_ss(&list, &z);
+	ft_rr(&list,&z);
+	ft_rrr(&list,&z);
+	output(2,&z);
 	//output(2,&y);
-	//ft_printf("\n");
-	//output(1000,&list);
-	//return (0);
-//}
+	ft_printf("\n");
+	output(1000,&list);
+	return (0);
+}

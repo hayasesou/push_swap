@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 22:30:44 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/13 00:30:13 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/09/16 16:12:15 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	shift_up(t_cd_list **list)
 	(*list) = (*list)->next;
 }
 
-void	rr(t_cd_list **x, t_cd_list **y)
+void	ft_rr(t_cd_list **x, t_cd_list **y)
 {
 	shift_up(x);
 	shift_up(y);

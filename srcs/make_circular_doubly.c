@@ -9,12 +9,15 @@ t_cd_list	*make_circular_doubly(t_ints_info *info)
 	int			i;
 
 	i = 0;
-	list = new_doubly (*(info->number));
+	list = new_doubly ();
+	if ((info->number) != NULL)
+		list->content = *(info->number);
 	tmp = list;
 	(info->number)++;
 	while (i < (info->av_num) - 1)
 	{
-		new = new_doubly(*(info->number));
+		new = new_doubly();
+		new->content = *(info->number);
 		add_front_doubly(&list, new);
 		(info->number)++;
 		i++;
@@ -46,19 +49,20 @@ t_cd_list	*make_circular_doubly(t_ints_info *info)
 	//}
 
 	//int_info.number = tmp;
+	////ft_printf("[%d]\n",*(int_info.number));
 	//list = make_circular_doubly(&int_info);
 	//int i = 0;
+	////while(i < 1000)
+	////{
+		////ft_printf("[%d]\n", (list->content));
+		////list = list->next;
+		////i++;
+	////}
+	////i = 0 ;
+	////ft_printf("\n");
 	//while(i < 1000)
 	//{
-		//printf("[%d]\n", (list->content));
-		//list = list->next;
-		//i++;
-	//}
-	//i = 0 ;
-	//ft_printf("\n");
-	//while(i < 1000)
-	//{
-		//printf("[%d]\n", (list->content));
+		//ft_printf("[%d]\n", (list->content));
 		//list = list->prev;
 		//i++;
 	//}
