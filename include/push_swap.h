@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:50:48 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/13 11:22:37 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/09/14 20:06:26 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define PUSH_SWAP_H
 
 # include <stdlib.h>
+# include "libft.h"
 # include "ft_printf.h"
+# include <limits.h>
 
 # define NEXT 1
 # define PREV 0
@@ -39,5 +41,6 @@ t_cd_list *new_doubly(int content);
 t_cd_list	*make_circular_doubly(t_ints_info *info);
 void swap_top_2(t_cd_list **list);
 void	push_x2y(t_cd_list **x, t_cd_list **y);
+long	ft_atof(const char *str);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 19:08:46 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/13 12:16:20 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/09/14 17:53:33 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,22 +109,22 @@ void output(int i, t_cd_list **list)
 	}
 }
 
-int	main	(void)
-{
-	t_cd_list	*list;
-	t_cd_list	*y;
-	t_ints_info	int_info1, int_info2;
+//int	main	(void)
+//{
+	//t_cd_list	*list;
+	//t_cd_list	*y;
+	//t_ints_info	int_info1, int_info2;
 
-	func(&int_info1, 1000);
-	list = make_circular_doubly(&int_info1);
-	func(&int_info2, 1);
-	y = make_circular_doubly(&int_info2);
+	//func(&int_info1, 1000);
+	//list = make_circular_doubly(&int_info1);
+	//func(&int_info2, 1);
+	//y = make_circular_doubly(&int_info2);
 
-	//push_x2y(&list,&y);
-	//swap_top_2(&y);
-	ft_ss(&list, &y);
-	output(2,&y);
-	ft_printf("\n");
-	output(1000,&list);
-	return (0);
-}
+	////push_x2y(&list,&y);
+	////swap_top_2(&y);
+	//ft_ss(&list, &y);
+	//output(2,&y);
+	//ft_printf("\n");
+	//output(1000,&list);
+	//return (0);
+//}
