@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:50:48 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/16 16:11:50 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/09/16 16:21:41 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct t_ints_info
 
 //make list
 void    add_front_doubly(t_cd_list **list, t_cd_list *new);
-t_cd_list *new_doubly();
+t_cd_list *new_doubly(void);
 t_cd_list	*make_circular_doubly(t_ints_info *info);
 
 //swap top of list and next

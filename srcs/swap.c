@@ -6,23 +6,25 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 19:08:46 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/16 16:13:21 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/09/16 16:23:34 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static	void	make_tmp_lists(t_cd_list *current, t_cd_list *second, t_cd_list **list)
+static	void	make_tmp_lists(t_cd_list *current, t_cd_list *second,
+		t_cd_list **list)
 {
 	current->next = (*list)->next;
 	current->prev = (*list)->prev;
 	(*list) = (*list)->next;
-	second->next =(*list)->next;
+	second->next = (*list)->next;
 	second->prev = (*list)->prev;
 	(*list) = (*list)->prev;
 }
 
-static void	set_ptr(t_cd_list **list, t_cd_list *place, t_cd_list *ptr, int direction)
+static void	set_ptr(t_cd_list **list, t_cd_list *place, t_cd_list *ptr,
+		int direction)
 {
 	(*list) = place;
 	if (direction == NEXT)
@@ -56,7 +58,7 @@ void	ft_ss(t_cd_list **x, t_cd_list **y)
 }
 
 
-static void	func(t_ints_info *inf,int num)
+static void	func(t_ints_info *inf, int num)
 {
 	int			*tmp;
 	int count = 0;
@@ -103,7 +105,7 @@ int	main	(void)
 	push_x2y(&list,&z);
 	//push_x2y(&list,&z);
 	//push_x2y(&list,&z);
-	//push_x2y(&z,&list);
+	push_x2y(&z,&list);
 	//swap_top_2(&y);
 	//ft_ss(&list, &z);
 	ft_rr(&list,&z);

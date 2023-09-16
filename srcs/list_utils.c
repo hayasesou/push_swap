@@ -6,20 +6,20 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 19:07:04 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/12 14:56:55 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/09/16 16:19:49 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_cd_list *new_doubly(int content)
+t_cd_list *new_doubly(void)
 {
     t_cd_list *list;
 
     list = (t_cd_list *)malloc(sizeof(t_cd_list));
     if (list == NULL)
         return(NULL);
-    list->content = content;
+    //list->content = content;
     list->prev = NULL;
     list->next = NULL;
     return (list);
@@ -39,4 +39,5 @@ t_cd_list *new_doubly(int content)
 
     //return(0);
 //}
+
 
