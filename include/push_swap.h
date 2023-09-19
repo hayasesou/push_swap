@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:50:48 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/16 16:21:41 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/09/19 01:42:47 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@
 # define NEXT 1
 # define PREV 0
 
+#define A 1
+#define B 2
+#define SAME 3
+
 typedef struct t_cd_list
 {
   int                content;
@@ -34,6 +38,11 @@ typedef struct t_ints_info
   int   av_num;
 } t_ints_info;
 
+typedef struct t_lists
+{
+  t_cd_list *stack_a;
+  t_cd_list *stack_b;
+} t_lists;
 
 //make list
 void    add_front_doubly(t_cd_list **list, t_cd_list *new);
@@ -46,16 +55,25 @@ void	ft_ss(t_cd_list **x, t_cd_list **y);
 
 //push top of x to y
 //afte this func , top of list is next ptr of what used to be
-void	push_x2y(t_cd_list **x, t_cd_list **y);
+void	push_x2y(t_cd_list **x, t_cd_list **y, int type);
 
 //shift up.
 // top of list is next ptr of current list
-void	shift_up(t_cd_list **list);
+void	ft_ra(t_cd_list **stack_a);
+void	ft_rb(t_cd_list **stack_b);
 void	ft_rr(t_cd_list **x, t_cd_list **y);
 
-void	shift_down(t_cd_list **list);
+//shift down
+void	ft_rra(t_cd_list **stack_a);
+void	ft_rrb(t_cd_list **stack_b);
 void	ft_rrr(t_cd_list **x, t_cd_list **y);
 
-long	ft_atof(const char *str);
+int	ft_atoi_push_swap(const char *str);
+void	display_error(void);
+
+//insretion_sort
+void	insertion_sort(int number_count, t_cd_list **stack_a, t_cd_list **stack_b);
+
+void	implicit_rotate(t_cd_list **list);
 
 #endif

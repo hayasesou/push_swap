@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   add_front_doubly.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 14:45:32 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/12 14:47:04 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/09/19 08:53:30 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+////////////
 #include "push_swap.h"
 
 void	add_front_doubly(t_cd_list **list, t_cd_list *new)
 {
 	if (list == NULL || new == NULL)
 		return ;
-	new->next = (*list);
-	(*list)->prev = new;
+	new->prev = (*list);
+	(*list)->next = new;
 	*list = new;
 }
 

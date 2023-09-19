@@ -23,9 +23,9 @@ t_cd_list	*make_circular_doubly(t_ints_info *info)
 		i++;
 	}
 
-	tmp->next = list;
-	list->prev = tmp;
-	return (list);
+	tmp->prev = list;
+	list->next = tmp;
+	return (tmp);
 }
 
 //int main	(void)
@@ -42,7 +42,7 @@ t_cd_list	*make_circular_doubly(t_ints_info *info)
 	//while (count < int_info.av_num)
 	//{
 		//*(int_info.number) = count;
-		////printf("[%p]\n",number);
+		////printf("[%p]\n",number;
 		//// printf("[%d]\n",*number);
 		//count++;
 		//int_info.number++;

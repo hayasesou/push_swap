@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 14:59:17 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/16 15:56:07 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/09/18 15:24:45 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,19 @@ static	t_cd_list	*pop_x(t_cd_list **list)
 {
 	t_cd_list	*tmp;
 
+	if (*list == NULL)
+		return (NULL);
 	tmp = (*list);
+	if (*list == (*list)->next)
+	{
+		*list = NULL;
+		return (tmp);
+	}
 	(*list) = (*list)->prev;
 	(*list)->next = tmp->next;
 	(*list) = (*list)->next;
 	(*list)->prev = tmp->prev;
+
 	return (tmp);
 }
 
@@ -31,6 +39,8 @@ static	t_cd_list	*pop_x(t_cd_list **list)
 // ptr of list is x
 static	void	push_x(t_cd_list **list, t_cd_list *x)
 {
+	if (x == NULL)
+		return ;
 	if (*list == NULL)
 	{
 		(*list) = x;
@@ -49,14 +59,18 @@ static	void	push_x(t_cd_list **list, t_cd_list *x)
 //x is top of stack
 //y is top of stack
 //Take the first element at the top of x and put it at the top of y
-void	push_x2y(t_cd_list **x, t_cd_list **y)
+void	push_x2y(t_cd_list **x, t_cd_list **y, int type)
 {
 	t_cd_list	*get;
 
-	if (*x == NULL)
-		return ;
 	get = pop_x(x);
+	if (get == NULL)
+	return ;
 	push_x(y, get);
+	if (type == A)
+		ft_printf("pa\n");
+	if (type == B)
+		ft_printf("pb\n");
 }
 
 

@@ -6,21 +6,36 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 22:30:44 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/16 16:12:15 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/09/18 15:57:50 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	shift_up(t_cd_list **list)
+static	void	shift_up(t_cd_list **list)
 {
+	if (*list == NULL)
+		return ;
 	(*list) = (*list)->next;
 }
 
-void	ft_rr(t_cd_list **x, t_cd_list **y)
+void	ft_ra(t_cd_list **stack_a)
 {
-	shift_up(x);
-	shift_up(y);
+	shift_up(stack_a);
+	ft_printf("ra\n");
+}
+
+void	ft_rb(t_cd_list **stack_b)
+{
+	shift_up(stack_b);
+	ft_printf("rb\n");
+}
+
+void	ft_rr(t_cd_list **a, t_cd_list **b)
+{
+	shift_up(a);
+	shift_up(b);
+	ft_printf("rr\n");
 }
 
 

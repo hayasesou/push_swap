@@ -6,22 +6,37 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 00:28:02 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/16 16:11:57 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:01:28 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "push_swap.h"
 
-void	shift_down(t_cd_list **list)
+static	void	shift_down(t_cd_list **list)
 {
+	if (*list == NULL)
+		return ;
 	(*list) = (*list)->prev;
 }
 
-void	ft_rrr(t_cd_list **x, t_cd_list **y)
+void	ft_rra(t_cd_list **stack_a)
 {
-	shift_down(x);
-	shift_down(y);
+	shift_down(stack_a);
+	ft_printf("rra\n");
+}
+
+void	ft_rrb(t_cd_list **stack_b)
+{
+	shift_down(stack_b);
+	ft_printf("rrb\n");
+}
+
+void	ft_rrr(t_cd_list **a, t_cd_list **b)
+{
+	shift_down(a);
+	shift_down(b);
+	ft_printf("rrr\n");
 }
 
 
@@ -69,7 +84,7 @@ void	ft_rrr(t_cd_list **x, t_cd_list **y)
 	////output(1000,&list);
 	//push_x2y(&list, &y);
 	////shift_up(&y);
-	//rrr(&list,&y);
+	//rr(&list,&y);
 	//output(2,&y);
 	//output(999,&list);
 	//return (0);
