@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:27:09 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/19 09:34:54 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/09/19 16:55:03 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,12 @@ void	check_dupulicate(int num, t_ints_info *info, int index, int *tmp)
 
 void	set_stack(t_lists *stack, t_ints_info *info)
 {
+	int *tmp;
+
+	tmp = info->number;
 	stack->stack_a = make_circular_doubly(info);
+	info->number = tmp;
+	free(info->number);
 }
 
 int	main(int ac, char **av)
@@ -68,23 +73,15 @@ int	main(int ac, char **av)
 	t_ints_info	info;
 	int			*tmp;
 
-	info.number = (int *)malloc(sizeof(int) * (ac -1));
-	tmp = info.number;
+
 	if (ac == 1)
-	{
-		free(tmp);
 		return (1);
-	}
+	info.number = (int *)malloc(sizeof(int) * (ac -1));
+	if (info.number == NULL)
+		return (1);
+	tmp = info.number;
 	store_int_info(&info, ac, av);
 	set_stack(&stack, &info);
-	//push_x2y(&(stack.stack_a),&(stack.stack_b),B);
-	//push_x2y(&(stack.stack_a),&(stack.stack_b),B);
-	//shift_up(&(stack.stack_a),A);
-	//shift_up(&(stack.stack_a),A);
-	//push_x2y(&(stack.stack_a),&(stack.stack_b),B);
-	//push_x2y(&(stack.stack_b),&(stack.stack_a),A);
-	//ft_rr(&(stack.stack_a),&(stack.stack_b));
-	//push_x2y(&(stack.stack_b),&(stack.stack_a),A);
 	insertion_sort(ac -1, &(stack.stack_a),&(stack.stack_b));
 	//ft_printf("\nstack_a \n");
 	for (int i =0; i < ac -1; i++)
@@ -108,9 +105,9 @@ int	main(int ac, char **av)
 		ft_printf("[%d]\n",stack.stack_b->content);
 		stack.stack_b = stack.stack_b->next;
 	}
-	info.number = tmp;
-	if (info.number != NULL)
-		free(info.number);
+	//info.number = tmp;
+	//if (info.number != NULL)
+		//free(info.number);
 	return (0);
 }
 

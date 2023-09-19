@@ -2,8 +2,7 @@ NAME = push_swap
 CFLAGS = -Wall -Wextra -Werror  -fsanitize=address -g
 M_FILES =	new_doubly.c add_front_doubly.c make_circular_doubly.c\
 			swap.c push.c shift_up.c shift_down.c push_swap_main.c\
-			argument_check.c display_Error.c insertion_sort.c\
-			implicit_rotate.c
+			argument_check.c display_Error.c insertion_sort.c
 LIBFT_DIR = ./libft
 LIBFT = ft
 PRINTF_DIR = ./printf
