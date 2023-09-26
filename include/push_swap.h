@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:50:48 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/19 01:42:47 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/09/26 09:04:17 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@
 #define A 1
 #define B 2
 #define SAME 3
+
+#define MAX_CASE 1
+#define MIN_CASE 2
+#define MIDDLE_CASE 3
 
 typedef struct t_cd_list
 {

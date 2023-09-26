@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:27:09 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/20 11:29:44 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/09/25 17:54:16 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	check_dupulicate(int num, t_ints_info *info, int index, int *tmp)
 
 void	set_stack(t_lists *stack, t_ints_info *info)
 {
-	int *tmp;
+	int	*tmp;
 
 	tmp = info->number;
 	stack->stack_a = make_circular_doubly(info);
@@ -67,23 +67,20 @@ void	set_stack(t_lists *stack, t_ints_info *info)
 	free(info->number);
 }
 
-int	main(int ac, char **av)
+int	main(int	ac, char	**av)
 {
 	t_lists		stack;
 	t_ints_info	info;
-	//int			*tmp;
-
 
 	if (ac == 1)
 		return (1);
 	info.number = (int *)malloc(sizeof(int) * (ac -1));
 	if (info.number == NULL)
 		return (1);
-	//tmp = info.number;
 	store_int_info(&info, ac, av);
 	set_stack(&stack, &info);
 	insertion_sort(ac -1, &(stack.stack_a),&(stack.stack_b));
-	//ft_printf("\nstack_a \n");
+	ft_printf("\nstack_a\n");
 	for (int i =0; i < ac -1; i++)
 	{
 		if (stack.stack_a == NULL)
