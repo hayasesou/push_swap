@@ -12,13 +12,13 @@
 
 #include "push_swap.h"
 
-static	void	check_int_overflow(int sign, long long *num, int digit);
-static	void	isinvalid_argument(const char *str);
-static	long	get_number(const char **str, int sign);
+static void	check_int_overflow(int sign, long long *num, int digit);
+static void	isinvalid_argument(const char *str);
+static long	get_number(const char **str, int sign);
 
 int	ft_atoi_push_swap(const char *str)
 {
-	int			sign;
+	int		sign;
 	long	num;
 
 	sign = 1;
@@ -38,12 +38,11 @@ int	ft_atoi_push_swap(const char *str)
 	return ((int)(num * sign));
 }
 
-static	long	get_number(const char **str, int sign)
+static long	get_number(const char **str, int sign)
 {
 	long long	num;
 
 	num = 0;
-
 	while ('0' <= **str && **str <= '9')
 	{
 		check_int_overflow(sign, &num, **str - '0');
@@ -51,16 +50,15 @@ static	long	get_number(const char **str, int sign)
 		(*str)++;
 	}
 	return (num);
-
 }
 
-static	void	isinvalid_argument(const char *str)
+static void	isinvalid_argument(const char *str)
 {
 	while (('\t' <= *str && *str <= '\r') || *str == ' ')
 		str++;
 	if (*str != '\0')
 		display_error();
-	return;
+	return ;
 }
 
 static void	check_int_overflow(int sign, long long *num, int digit)
@@ -71,5 +69,5 @@ static void	check_int_overflow(int sign, long long *num, int digit)
 	if (*num * sign < INT_MIN / 10 || (*num * sign == INT_MIN / 10
 			&& (-digit) < INT_MIN % 10))
 		display_error();
-	return;
+	return ;
 }

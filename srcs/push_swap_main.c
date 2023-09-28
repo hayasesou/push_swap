@@ -6,21 +6,20 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:27:09 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/25 17:54:16 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/09/27 20:03:58 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-
 void	check_dupulicate(int num, t_ints_info *info, int index, int *tmp);
 
 void	store_int_info(t_ints_info *info, int ac, char **av)
 {
-	int			*tmp;
-	int			index;
-	int			num;
+	int	*tmp;
+	int	index;
+	int	num;
 
 	info->av_num = 0;
 	tmp = info->number;
@@ -35,6 +34,7 @@ void	store_int_info(t_ints_info *info, int ac, char **av)
 		index++;
 	}
 	info->number = tmp;
+	coordinate_compression(info);
 }
 
 void	check_dupulicate(int num, t_ints_info *info, int index, int *tmp)
@@ -67,50 +67,45 @@ void	set_stack(t_lists *stack, t_ints_info *info)
 	free(info->number);
 }
 
-int	main(int	ac, char	**av)
+int	main(int ac, char **av)
 {
 	t_lists		stack;
 	t_ints_info	info;
 
 	if (ac == 1)
 		return (1);
-	info.number = (int *)malloc(sizeof(int) * (ac -1));
+	info.number = (int *)malloc(sizeof(int) * (ac - 1));
 	if (info.number == NULL)
 		return (1);
 	store_int_info(&info, ac, av);
 	set_stack(&stack, &info);
-	insertion_sort(ac -1, &(stack.stack_a),&(stack.stack_b));
+	insertion_sort(info.av_num, &(stack.stack_a), &(stack.stack_b));
 	ft_printf("\nstack_a\n");
-	for (int i =0; i < ac -1; i++)
+	for (int i = 0; i < ac - 1; i++)
 	{
-		if (stack.stack_a == NULL)
-		{
-			ft_printf("No stack a\n");
-			break;
-		}
-		ft_printf("[%d]\n",stack.stack_a->content);
-		stack.stack_a = stack.stack_a->next;
+	if (stack.stack_a == NULL)
+	{
+	ft_printf("No stack a\n");
+	break ;
+	}
+	ft_printf("[%d]\n", stack.stack_a->content);
+	stack.stack_a = stack.stack_a->next;
 	}
 	ft_printf("\nstack_b\n");
-	for (int i =0; i < ac -1; i++)
+	for (int i = 0; i < ac - 1; i++)
 	{
-		if (stack.stack_b == NULL)
-		{
-			ft_printf("No stack b\n");
-			break;
-		}
-		ft_printf("[%d]\n",stack.stack_b->content);
-		stack.stack_b = stack.stack_b->next;
+	if (stack.stack_b == NULL)
+	{
+	ft_printf("No stack b\n");
+	break ;
 	}
-	//info.number = tmp;
-	//if (info.number != NULL)
-		//free(info.number);
+	ft_printf("[%d]\n", stack.stack_b->content);
+	stack.stack_b = stack.stack_b->next;
+	}
 	return (0);
 }
 
-
-
 //__attribute__((destructor))
 //static void destructor() {
-    //system("leaks -q push_swap");
+//system("leaks -q push_swap");
 //}

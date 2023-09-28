@@ -15,5 +15,5 @@
 void	display_error(void)
 {
 	ft_printf("Error\n");
-	exit (1);
+	exit(1);
 }

@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "push_swap.h"
 
-static	void	make_tmp_lists(t_cd_list *current, t_cd_list *second,
+static void	make_tmp_lists(t_cd_list *current, t_cd_list *second,
 		t_cd_list **list)
 {
 	current->next = (*list)->next;
@@ -51,69 +50,67 @@ void	swap_top_2(t_cd_list **list)
 	(*list) = current.next;
 }
 
-
 void	ft_ss(t_cd_list **x, t_cd_list **y)
 {
 	swap_top_2(x);
 	swap_top_2(y);
 }
 
-
 //static void	func(t_ints_info *inf, int num)
 //{
-	//int			*tmp;
-	//int count = 0;
-	//inf->av_num = num;
-	//inf->number = (int *)malloc(sizeof(int) * inf->av_num);
-	//tmp = inf->number;
-	//while (count < inf->av_num)
-	//{
-		//*tmp = count;
-		//count++;
-		//tmp++;
-	//}
+//int			*tmp;
+//int count = 0;
+//inf->av_num = num;
+//inf->number = (int *)malloc(sizeof(int) * inf->av_num);
+//tmp = inf->number;
+//while (count < inf->av_num)
+//{
+//*tmp = count;
+//count++;
+//tmp++;
+//}
 //}
 
 //static void output(int i, t_cd_list **list)
 //{
-	//int count;
-	//count = 0;
+//int count;
+//count = 0;
 
-	//if (*list == NULL)
-		//return ;
-	//while (count < i)
-	//{
-		//ft_printf("[%d]\n",(*list)->content);
-		//(*list) = (*list)->next;
-		//count++;
-	//}
+//if (*list == NULL)
+//return ;
+//while (count < i)
+//{
+//ft_printf("[%d]\n",(*list)->content);
+//(*list) = (*list)->next;
+//count++;
+//}
 //}
 
 //int	main	(void)
 //{
-	//t_cd_list	*list;
-	//t_cd_list	*y;
-	//t_cd_list	*z;
-	//t_ints_info	int_info1, int_info2;
+//t_cd_list	*list;
+//t_cd_list	*y;
+//t_cd_list	*z;
+//t_ints_info	int_info1, int_info2;
 
-	//func(&int_info1, 1000);
-	//list = make_circular_doubly(&int_info1);
-	//func(&int_info2, 1);
-	//y = make_circular_doubly(&int_info2);
+//func(&int_info1, 1000);
+//list = make_circular_doubly(&int_info1);
+//func(&int_info2, 1);
+//y = make_circular_doubly(&int_info2);
 
-	//swap_top_2(&z);
-	//push_x2y(&list,&z);
-	//push_x2y(&list,&z);
-	////push_x2y(&list,&z);
-	////push_x2y(&list,&z);
-	//push_x2y(&z,&list);
-	////swap_top_2(&y);
-	////ft_ss(&list, &z);
-	//ft_rr(&list,&z);
-	//ft_rrr(&list,&z);
-	//output(2,&z);
-	////output(2,&y);
-	//ft_printf("\n");
-	//output(1000,&list);
-	//return (0);
+//swap_top_2(&z);
+//push_x2y(&list,&z);
+//push_x2y(&list,&z);
+////push_x2y(&list,&z);
+////push_x2y(&list,&z);
+//push_x2y(&z,&list);
+////swap_top_2(&y);
+////ft_ss(&list, &z);
+//ft_rr(&list,&z);
+//ft_rrr(&list,&z);
+//output(2,&z);
+////output(2,&y);
+//ft_printf("\n");
+//output(1000,&list);
+//return (0);
 //}
