@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:27:09 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/27 20:03:58 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/09/28 16:42:54 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	main(int ac, char **av)
 		return (1);
 	store_int_info(&info, ac, av);
 	set_stack(&stack, &info);
-	insertion_sort(info.av_num, &(stack.stack_a), &(stack.stack_b));
+	check_list_order(&stack, info.av_num);
 	ft_printf("\nstack_a\n");
 	for (int i = 0; i < ac - 1; i++)
 	{

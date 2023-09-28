@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:50:48 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/27 17:36:36 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/09/28 20:42:03 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ t_cd_list				*new_doubly(void);
 t_cd_list				*make_circular_doubly(t_ints_info *info);
 
 //swap top of list and next
-void					swap_top_2(t_cd_list **list);
+void					ft_sa(t_cd_list **stack_a);
+void					ft_sb(t_cd_list **stack_b);
 void					ft_ss(t_cd_list **x, t_cd_list **y);
 
 //push top of x to y
@@ -83,5 +84,8 @@ void					insertion_sort(int number_count, t_cd_list **stack_a,
 
 
 void					coordinate_compression(t_ints_info *info);
+
+void					check_list_order(t_lists *stack, int av_num);
+void					sort_3number(t_cd_list **stack_a);
 
 #endif

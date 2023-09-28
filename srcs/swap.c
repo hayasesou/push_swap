@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 19:08:46 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/16 23:10:45 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/09/28 19:57:39 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,22 @@ void	swap_top_2(t_cd_list **list)
 	set_ptr(list, second.prev, current.next, PREV);
 	set_ptr(list, second.next, second.prev, PREV);
 	(*list) = current.next;
+}
+
+void	ft_sa(t_cd_list **stack_a)
+{
+	if (*stack_a == NULL || (*stack_a)->next == (*stack_a))
+		return ;
+	swap_top_2(stack_a);
+	ft_printf("sa\n");
+}
+
+void	ft_sb(t_cd_list **stack_b)
+{
+	if (*stack_b == NULL || (*stack_b)->next == (*stack_b))
+		return ;
+	swap_top_2(stack_b);
+	ft_printf("sb\n");
 }
 
 void	ft_ss(t_cd_list **x, t_cd_list **y)
