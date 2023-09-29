@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:50:48 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/28 20:42:03 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/09/29 16:01:19 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 typedef struct t_cd_list
 {
 	int					content;
+	int					group_id;
 	struct t_cd_list	*prev;
 	struct t_cd_list	*next;
 }						t_cd_list;
@@ -79,13 +80,17 @@ int						ft_atoi_push_swap(const char *str);
 void					display_error(void);
 
 //insretion_sort
-void					insertion_sort(int number_count, t_cd_list **stack_a,
+void					stack_a_insertion_sort(int number_count, t_cd_list **stack_a,
 							t_cd_list **stack_b);
-
+void					stack_b_insertion_sort(int number_count, t_cd_list **stack_b,
+							t_cd_list **stack_a);
 
 void					coordinate_compression(t_ints_info *info);
 
 void					check_list_order(t_lists *stack, int av_num);
-void					sort_3number(t_cd_list **stack_a);
+void					stack_a_sort_3number(t_cd_list **stack_a);
+void					stack_b_sort_3number(t_cd_list **stack_b);
+
+void					quick_sort(int av_num, t_cd_list **stack_a, t_cd_list **stack_b);
 
 #endif

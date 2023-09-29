@@ -6,18 +6,20 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 16:10:48 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/28 20:47:26 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/09/29 16:45:18 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "push_swap.h"
 
-void	sort_3number(t_cd_list **stack_a)
+void	stack_a_sort_3number(t_cd_list **stack_a)
 {
 	int	comparison;
 	int	i;
 	int	tmp;
 
+	if (stack_a == NULL)
+		return ;
 	i = -1;
 	comparison = 0;
 	tmp = (*stack_a)->content;
@@ -35,9 +37,7 @@ void	sort_3number(t_cd_list **stack_a)
 		ft_sa(stack_a);
 	}
 	else if (comparison == 0)
-	{
 		return ;
-	}
 	else if (comparison == 1 && (*stack_a)->content >(*stack_a)->next->content)
 		ft_sa(stack_a);
 	else if (comparison == 1)
@@ -50,11 +50,6 @@ void	sort_3number(t_cd_list **stack_a)
 	else
 		ft_ra(stack_a);
 }
-
-//void	sort_5number(t_cd_list **stack_a)
-//{
-
-//}
 
 void	check_list_order(t_lists *stack, int av_num)
 {
@@ -72,10 +67,15 @@ void	check_list_order(t_lists *stack, int av_num)
 		return ;
 	while (i-- > 0)
 		stack->stack_a = stack->stack_a->prev;
-	if(av_num == 3)
+	if (av_num == 2)
 	{
-		sort_3number(&(stack->stack_a));
+		ft_ra(&(stack->stack_a));
 		return ;
 	}
-	insertion_sort(av_num, &(stack->stack_a), &(stack->stack_b));
+	if (av_num == 3)
+	{
+		stack_a_sort_3number(&(stack->stack_a));
+		return ;
+	}
+	stack_a_insertion_sort(av_num, &(stack->stack_a), &(stack->stack_b));
 }
