@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 15:45:17 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/01 02:43:57 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/01 02:59:46 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ void	stack_b_quick_sort(int av_num, t_cd_list **stack_b, t_cd_list **stack_a, in
 {
 	int	pivot;
 	int	i;
-	int	j;
-	int	sum;
+	// int	j;
+	// int	sum;
 	int count_stack_b_node;
 	int count_ra;
 	int group_id;
 
-	j = -1;
-	sum = 0;
+	// j = -1;
+	// sum = 0;
 	if (av_num < 12)
 	{
 		stack_b_insertion_sort(av_num, stack_b, stack_a);
@@ -57,14 +57,15 @@ void	stack_b_quick_sort(int av_num, t_cd_list **stack_b, t_cd_list **stack_a, in
 		}
 		return ;
 	}
-	while (++j < av_num)
-	{
-		sum += (*stack_b)->content;
-		(*stack_b) = (*stack_b)->next;
-	}
-	while (j-- > 0)
-		(*stack_b) = (*stack_b)->prev;
-	pivot = sum / av_num;
+	//while (++j < av_num)
+	//{
+		//sum += (*stack_b)->content;
+		//(*stack_b) = (*stack_b)->next;
+	//}
+	//while (j-- > 0)
+		//(*stack_b) = (*stack_b)->prev;
+	//pivot = sum / av_num;
+	pivot = get_pivot(av_num, stack_b);
 	i = -1;
 	count_stack_b_node = 0;
 	while (++i < av_num)
