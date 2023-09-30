@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:27:09 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/30 12:04:46 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/09/30 14:41:55 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,35 +80,35 @@ int	main(int ac, char **av)
 	store_int_info(&info, ac, av);
 	set_stack(&stack, &info);
 	quick_sort(info.av_num, &(stack.stack_a), &(stack.stack_b));
-	while(stack.stack_a)
+	// while(stack.stack_a)
 	//push_x2y(&(stack.stack_a), &(stack.stack_b), B);
-	//stack_b_insertion_sort(info.av_num, &(stack.stack_b), &(stack.stack_a));
+	// stack_b_insertion_sort(info.av_num, &(stack.stack_b), &(stack.stack_a));
 	//check_list_order(&stack, info.av_num);
 
 
 
-	//ft_printf("\nstack_a\n");
-	//for (int i = 0; i < ac - 1; i++)
-	//{
-	//if (stack.stack_a == NULL)
-	//{
-	//ft_printf("No stack a\n");
-	//break ;
-	//}
-	//ft_printf("[%d]\n", stack.stack_a->group_id);
-	//stack.stack_a = stack.stack_a->next;
-	//}
-	//ft_printf("\nstack_b\n");
-	//for (int i = 0; i < ac - 1; i++)
-	//{
-	//if (stack.stack_b == NULL)
-	//{
-	//ft_printf("No stack b\n");
-	//break ;
-	//}
-	//ft_printf("[%d]\n", stack.stack_b->group_id);
-	//stack.stack_b = stack.stack_b->next;
-	//}
+	ft_printf("\nstack_a\n");
+	for (int i = 0; i < ac - 1; i++)
+	{
+	if (stack.stack_a == NULL)
+	{
+	ft_printf("No stack a\n");
+	break ;
+	}
+	ft_printf("[%d]\n", stack.stack_a->group_id);
+	stack.stack_a = stack.stack_a->next;
+	}
+	ft_printf("\nstack_b\n");
+	for (int i = 0; i < ac - 1; i++)
+	{
+	if (stack.stack_b == NULL)
+	{
+	ft_printf("No stack b\n");
+	break ;
+	}
+	ft_printf("[%d]\n", stack.stack_b->group_id);
+	stack.stack_b = stack.stack_b->next;
+	}
 	return (0);
 }
 

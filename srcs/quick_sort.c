@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 15:45:17 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/30 12:11:21 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/09/30 16:54:53 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,34 +24,34 @@ void	stack_b_quick_sort(int av_num, t_cd_list **stack_b, t_cd_list **stack_a, in
 
 	j = -1;
 	sum = 0;
-	//if (av_num < 4)
-	//{
-		//stack_b_sort_3number(stack_b);
-		//while ((*stack_b) != NULL)
-		//{
-		//push_x2y(stack_b, stack_a, A);
-		//ft_ra(stack_a);
-		//}
-		//return ;
-	//}
-	if (av_num < 15)
+	if (av_num < 4)
 	{
-		stack_b_insertion_sort(av_num, stack_b, stack_a);
-		if (av_num >3)
-		{
-			while ((*stack_a)->group_id == (*stack_a)->next->group_id)
-			{
-				ft_ra(stack_a);
-			}
-			ft_ra(stack_a);
-		}
+		stack_b_sort_3number(stack_b);
 		while ((*stack_b) != NULL)
 		{
-			push_x2y(stack_b, stack_a, A);
-			ft_ra(stack_a);
+		push_x2y(stack_b, stack_a, A);
+		ft_ra(stack_a);
 		}
 		return ;
 	}
+	//if (av_num < 15)
+	//{
+		//stack_b_insertion_sort(av_num, stack_b, stack_a);
+		//if (av_num >3)
+		//{
+			//while ((*stack_a)->group_id == (*stack_a)->next->group_id)
+			//{
+				//ft_ra(stack_a);
+			//}
+			//ft_ra(stack_a);
+		//}
+		//while ((*stack_b) != NULL)
+		//{
+			//push_x2y(stack_b, stack_a, A);
+			//ft_ra(stack_a);
+		//}
+		//return ;
+	//}
 	while (++j < av_num)
 	{
 		sum += (*stack_b)->content;
@@ -84,7 +84,7 @@ void	stack_b_quick_sort(int av_num, t_cd_list **stack_b, t_cd_list **stack_a, in
 		count_ra++;
 	}
 	if ((*stack_b) != NULL)
-		stack_b_quick_sort(count_ra, stack_b, stack_a, 10);
+		stack_b_quick_sort(count_ra, stack_b, stack_a, 50);
 }
 
 void	stack_small_quick_sort(int av_num, t_cd_list **stack_a, t_cd_list **stack_b, int group_id)
@@ -99,8 +99,6 @@ void	stack_small_quick_sort(int av_num, t_cd_list **stack_a, t_cd_list **stack_b
 	sum = 0;
 
 	push_count = 0;
-	//if (av_num < 15)
-		//return ;
 	while (++j < av_num)
 	{
 		sum += (*stack_a)->content;
@@ -124,7 +122,7 @@ void	stack_small_quick_sort(int av_num, t_cd_list **stack_a, t_cd_list **stack_b
 			ft_ra(stack_a);
 		}
 	}
-	stack_b_quick_sort(push_count, stack_b, stack_a, group_id + 10000000);
+	stack_b_quick_sort(push_count, stack_b, stack_a, group_id + 1);
 }
 
 void	stack_large_quick_sort(int av_num, t_cd_list **stack_a, t_cd_list **stack_b, int group_id)
@@ -172,5 +170,5 @@ void	stack_large_quick_sort(int av_num, t_cd_list **stack_a, t_cd_list **stack_b
 void	quick_sort(int av_num, t_cd_list **stack_a, t_cd_list **stack_b)
 {
 	stack_small_quick_sort(av_num, stack_a, stack_b, 0);
-	// stack_large_quick_sort(av_num, stack_a, stack_b, 1000);
+	stack_large_quick_sort(av_num, stack_a, stack_b, 1000);
 }
