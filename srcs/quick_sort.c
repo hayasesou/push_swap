@@ -6,14 +6,25 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 15:45:17 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/30 16:54:53 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/01 02:43:57 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "push_swap.h"
 
+void print_stack(t_cd_list *stack)
+{
+	int x = stack->content;
 
-void	stack_b_quick_sort(int av_num, t_cd_list **stack_b, t_cd_list **stack_a, int group_id)
+	dprintf(STDERR_FILENO, "[");
+	do {
+		dprintf(STDERR_FILENO, "%dg%d, ", stack->content, stack->group_id);
+		stack = stack->next;
+	} while(stack->content != x);
+	dprintf(STDERR_FILENO, "]\n");
+}
+
+void	stack_b_quick_sort(int av_num, t_cd_list **stack_b, t_cd_list **stack_a, int *group_id_max)
 {
 	int	pivot;
 	int	i;
@@ -21,37 +32,31 @@ void	stack_b_quick_sort(int av_num, t_cd_list **stack_b, t_cd_list **stack_a, in
 	int	sum;
 	int count_stack_b_node;
 	int count_ra;
+	int group_id;
 
 	j = -1;
 	sum = 0;
-	if (av_num < 4)
+	if (av_num < 12)
 	{
-		stack_b_sort_3number(stack_b);
+		stack_b_insertion_sort(av_num, stack_b, stack_a);
+		print_stack(*stack_a);
+		print_stack(*stack_b);
+		dprintf(STDERR_FILENO, "---\n");
+		if (av_num >3)
+		{
+			while ((*stack_a)->group_id == (*stack_a)->next->group_id)
+			{
+				ft_ra(stack_a);
+			}
+			ft_ra(stack_a);
+		}
 		while ((*stack_b) != NULL)
 		{
-		push_x2y(stack_b, stack_a, A);
-		ft_ra(stack_a);
+			push_x2y(stack_b, stack_a, A);
+			ft_ra(stack_a);
 		}
 		return ;
 	}
-	//if (av_num < 15)
-	//{
-		//stack_b_insertion_sort(av_num, stack_b, stack_a);
-		//if (av_num >3)
-		//{
-			//while ((*stack_a)->group_id == (*stack_a)->next->group_id)
-			//{
-				//ft_ra(stack_a);
-			//}
-			//ft_ra(stack_a);
-		//}
-		//while ((*stack_b) != NULL)
-		//{
-			//push_x2y(stack_b, stack_a, A);
-			//ft_ra(stack_a);
-		//}
-		//return ;
-	//}
 	while (++j < av_num)
 	{
 		sum += (*stack_b)->content;
@@ -66,7 +71,7 @@ void	stack_b_quick_sort(int av_num, t_cd_list **stack_b, t_cd_list **stack_a, in
 	{
 		if ((*stack_b)->content >= pivot)
 		{
-			(*stack_b)->group_id = group_id + 1;
+			(*stack_b)->group_id = *group_id_max + 1;
 			push_x2y(stack_b, stack_a, A);
 		}
 		else
@@ -75,7 +80,9 @@ void	stack_b_quick_sort(int av_num, t_cd_list **stack_b, t_cd_list **stack_a, in
 			count_stack_b_node++;
 		}
 	}
-	stack_b_quick_sort(count_stack_b_node, stack_b, stack_a, group_id + 1);
+	group_id = *group_id_max;
+	*group_id_max += 1;
+	stack_b_quick_sort(count_stack_b_node, stack_b, stack_a, group_id_max);
 
 	count_ra = 0;
 	while ((*stack_a)->group_id == group_id + 1)
@@ -84,91 +91,14 @@ void	stack_b_quick_sort(int av_num, t_cd_list **stack_b, t_cd_list **stack_a, in
 		count_ra++;
 	}
 	if ((*stack_b) != NULL)
-		stack_b_quick_sort(count_ra, stack_b, stack_a, 50);
-}
-
-void	stack_small_quick_sort(int av_num, t_cd_list **stack_a, t_cd_list **stack_b, int group_id)
-{
-	int	pivot;
-	int	i;
-	int j;
-	int sum;
-	int push_count;
-
-	j = -1;
-	sum = 0;
-
-	push_count = 0;
-	while (++j < av_num)
-	{
-		sum += (*stack_a)->content;
-		(*stack_a) = (*stack_a)->next;
-	}
-	while (j-- > 0)
-		(*stack_a) = (*stack_a)->prev;
-	pivot = sum / av_num;
-	i = -1;
-	while (++i < av_num)
-	{
-		if ((*stack_a)->content <= pivot)
-		{
-			(*stack_a)->group_id = group_id + 1;
-			push_x2y(stack_a, stack_b, B);
-			push_count++;
-		}
-		else
-		{
-			(*stack_a)->group_id = group_id;
-			ft_ra(stack_a);
-		}
-	}
-	stack_b_quick_sort(push_count, stack_b, stack_a, group_id + 1);
-}
-
-void	stack_large_quick_sort(int av_num, t_cd_list **stack_a, t_cd_list **stack_b, int group_id)
-{
-	int	pivot;
-	int	i;
-	int j;
-	int sum;
-	int push_count;
-
-	j = -1;
-	sum = 0;
-
-	push_count = 0;
-	//if (av_num < 15)
-		//return ;
-	while (++j < av_num)
-	{
-		sum += (*stack_a)->content;
-		(*stack_a) = (*stack_a)->next;
-	}
-	while (j-- > 0)
-		(*stack_a) = (*stack_a)->prev;
-	pivot = sum / av_num;
-	i = -1;
-	while (++i < av_num /2)
-	{
-		if ((*stack_a)->content > pivot)
-		{
-			(*stack_a)->group_id = group_id + 1;
-			push_x2y(stack_a, stack_b, B);
-			push_count++;
-		}
-		else
-		{
-			(*stack_a)->group_id = group_id;
-			ft_ra(stack_a);
-		}
-	}
-	stack_b_quick_sort(push_count, stack_b, stack_a, group_id + 1);
-
+		stack_b_quick_sort(count_ra, stack_b, stack_a, group_id_max);
 }
 
 
 void	quick_sort(int av_num, t_cd_list **stack_a, t_cd_list **stack_b)
 {
-	stack_small_quick_sort(av_num, stack_a, stack_b, 0);
-	stack_large_quick_sort(av_num, stack_a, stack_b, 1000);
+	int max;
+	max = 0;
+	stack_small_quick_sort(av_num, stack_a, stack_b, &max);
+	stack_large_quick_sort(av_num, stack_a, stack_b, &max);
 }

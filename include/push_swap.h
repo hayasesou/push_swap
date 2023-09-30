@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:50:48 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/30 01:21:04 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/01 02:01:29 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "libft.h"
 # include <limits.h>
 # include <stdlib.h>
+# include <libc.h>
 
 # define NEXT 1
 # define PREV 0
@@ -99,5 +100,8 @@ void					stack_a_sort_3number(t_cd_list **stack_a);
 void					stack_b_sort_3number(t_cd_list **stack_b);
 
 void					quick_sort(int av_num, t_cd_list **stack_a, t_cd_list **stack_b);
+void	stack_b_quick_sort(int av_num, t_cd_list **stack_b, t_cd_list **stack_a, int *group_id_max);
+void	stack_small_quick_sort(int av_num, t_cd_list **stack_a, t_cd_list **stack_b, int *group_id_max);
+void	stack_large_quick_sort(int av_num, t_cd_list **stack_a, t_cd_list **stack_b, int *group_id_max);
 
 #endif

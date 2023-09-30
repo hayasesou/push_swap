@@ -4,7 +4,9 @@ M_FILES =	new_doubly.c add_back_doubly.c make_circular_doubly.c\
 			swap.c push.c shift_up.c shift_down.c push_swap_main.c\
 			argument_check.c display_Error.c insertion_sort.c\
 			coordinate_compression.c check_list_order.c\
-			quick_sort.c insertion_in_stack_b.c stack_b_3number.c
+			quick_sort.c insertion_in_stack_b.c stack_b_3number.c\
+			small_large_quick.c
+
 LIBFT_DIR = ./libft
 LIBFT = ft
 PRINTF_DIR = ./printf
