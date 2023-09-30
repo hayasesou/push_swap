@@ -6,24 +6,11 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 14:24:44 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/29 09:53:07 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/09/30 00:55:50 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static	void	push_all_stack(int number_count, t_cd_list **stack_a,
-		t_cd_list **stack_b)
-{
-	int	i;
-
-	i = 0;
-	while (i < number_count)
-	{
-		push_x2y(stack_b, stack_a, A);
-		i++;
-	}
-}
 
 static	t_cd_list	*get_position2insert(t_cd_list **stack_a,
 		t_cd_list **stack_b, int *spot, int i)
@@ -110,5 +97,6 @@ void	stack_a_insertion_sort(int number_count, t_cd_list **stack_a,
 			from_botom(spot, i, stack_a, stack_b);
 	}
 	stack_a_sort_3number(stack_a);
-	push_all_stack(number_count -2, stack_a, stack_b);
+	while ((*stack_b) != NULL)
+		push_x2y(stack_b, stack_a, A);
 }

@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 09:44:10 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/29 17:20:51 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/09/30 07:44:28 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	stack_b_sort_3number(t_cd_list **stack_b)
 	}
 	while (i-- > 0)
 		(*stack_b) = (*stack_b)->prev;
+
 	if (comparison == 0 && (*stack_b)->next->content > (*stack_b)->next->next->content)
 	{
 		ft_rrb(stack_b);

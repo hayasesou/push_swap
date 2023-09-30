@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:50:48 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/29 16:01:19 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/09/30 01:21:04 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,13 @@ typedef struct t_lists
 	t_cd_list			*stack_a;
 	t_cd_list			*stack_b;
 }						t_lists;
+
+typedef struct t_top3number
+{
+	int	top1;
+	int	top2;
+	int	top3;
+}						t_top3number;
 
 //make list
 void					add_back_doubly(t_cd_list **list, t_cd_list *new);
