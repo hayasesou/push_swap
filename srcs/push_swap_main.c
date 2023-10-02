@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:27:09 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/01 00:47:58 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/01 15:10:59 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,26 @@ void	set_stack(t_lists *stack, t_ints_info *info)
 	free(info->number);
 }
 
+static void sort(int av_num, t_lists *stack)
+{
+	check_list_order(stack, av_num);
+	if (av_num == 2)
+	{
+		ft_ra(&(stack->stack_a));
+		return ;
+	}
+	else if (av_num == 3)
+	{
+		stack_a_sort_3number(&(stack->stack_a));
+		return ;
+	}
+	else if	(av_num < 10)
+		stack_a_insertion_sort(av_num, &(stack->stack_a), &(stack->stack_b));
+	else
+		quick_sort(av_num, &(stack->stack_a),&(stack->stack_b));
+}
+
+
 int	main(int ac, char **av)
 {
 	t_lists		stack;
@@ -79,7 +99,7 @@ int	main(int ac, char **av)
 		return (1);
 	store_int_info(&info, ac, av);
 	set_stack(&stack, &info);
-	quick_sort(info.av_num, &(stack.stack_a), &(stack.stack_b));
+	sort(info.av_num, &stack);
 	return (0);
 }
 

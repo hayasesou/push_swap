@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 09:12:47 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/01 00:44:08 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/01 15:41:33 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	stack_b_insertion_sort(int number_count, t_cd_list **stack_b,
 
 	if (number_count < 4)
 	{
-
 		stack_b_sort_3number(stack_b);
 		return;
 	}

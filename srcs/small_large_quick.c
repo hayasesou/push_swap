@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:45:56 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/01 02:59:24 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/01 13:49:23 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int get_pivot(int stack_number, t_cd_list ** stack_x)
 	int min;
 	int max;
 	int ret;
-
-	i = -1;
+	
+	i = -1; 
 	min = INT_MAX;
 	max = INT_MIN;
 	while(++i < stack_number)
@@ -43,7 +43,6 @@ void	stack_small_quick_sort(int av_num, t_cd_list **stack_a, t_cd_list **stack_b
 	int	push_count;
 
 	push_count = 0;
-
 	pivot = get_pivot(av_num, stack_a);
 	i = -1;
 	while (++i < av_num)

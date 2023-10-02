@@ -1,14 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_list_order.c                                 :+:      :+:    :+:   */
+/*   stack_a_3number.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/28 16:10:48 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/01 15:40:12 by hfukushi         ###   ########.fr       */
+/*   Created: 2023/10/02 10:30:11 by hfukushi          #+#    #+#             */
+/*   Updated: 2023/10/02 10:32:39 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 # include "push_swap.h"
 
@@ -21,6 +22,14 @@ void	stack_a_sort_3number(t_cd_list **stack_a)
 	if (stack_a == NULL)
 		return ;
 	i = -1;
+	if ((*stack_a)->next == (*stack_a))
+		return ;
+	if ((*stack_a)->next->next == (*stack_a))
+	{
+		if((*stack_a)->content > (*stack_a)->next->content)
+			ft_sa(stack_a);
+		return;
+	}
 	comparison = 0;
 	tmp = (*stack_a)->content;
 	while (++i < 2)
@@ -31,6 +40,7 @@ void	stack_a_sort_3number(t_cd_list **stack_a)
 	}
 	while (i-- > 0)
 		(*stack_a) = (*stack_a)->prev;
+
 	if (comparison == 0 && (*stack_a)->next->content > (*stack_a)->next->next->content)
 	{
 		ft_rra(stack_a);
@@ -49,22 +59,4 @@ void	stack_a_sort_3number(t_cd_list **stack_a)
 	}
 	else
 		ft_ra(stack_a);
-}
-
-void	check_list_order(t_lists *stack, int av_num)
-{
-	int	i;
-
-	i = -1;
-	while (++i < av_num)
-	{
-		if (i != av_num -1 && stack->stack_a->content + 1 !=
-			stack->stack_a->next->content)
-			break ;
-		stack->stack_a = stack->stack_a->next;
-	}
-	if (i == av_num)
-		exit (0) ;
-	while (i-- > 0)
-		stack->stack_a = stack->stack_a->prev;
 }
