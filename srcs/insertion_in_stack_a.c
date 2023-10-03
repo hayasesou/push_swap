@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 14:24:44 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/03 15:49:07 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/03 18:06:47 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,28 +74,26 @@ void	stack_a_insertion_sort(int number_count, t_lists *stack)
 	int			j;
 	int			spot;
 	t_cd_list	*tmp;
-	t_cd_list	**stack_a = &(stack->stack_a);
-	t_cd_list	**stack_b = &(stack->stack_b);
 
 	i = 0;
-	if ((*stack_a)->content < number_count - 3)
-		push_x2y(stack_a, stack_b, B);
+	if (stack->stack_a->content < number_count - 3)
+		push_x2y(&(stack->stack_a), &(stack->stack_b), B);
 	else
 		find_first_not_top3(number_count, stack);
 	while (++i < number_count - 3)
 	{
-		while ((*stack_a)->content >= number_count - 3)
-			ft_ra(stack_a);
-		tmp = get_position2insert(stack_a, stack_b, &spot, i);
+		while (stack->stack_a->content >= number_count - 3)
+			ft_ra(&(stack->stack_a));
+		tmp = get_position2insert(&(stack->stack_a), &(stack->stack_b), &spot, i);
 		j = -1;
 		if (spot == 0)
-			push_x2y(stack_a, stack_b, B);
+			push_x2y(&(stack->stack_a), &(stack->stack_b), B);
 		else if (spot < (i - 1) / 2)
 			from_top(spot, stack, tmp);
 		else
 			from_botom(spot, i, stack);
 	}
-	stack_a_sort_3number(stack_a);
-	while ((*stack_b) != NULL)
-		push_x2y(stack_b, stack_a, A);
+	stack_a_sort_3number(&(stack->stack_a));
+	while (stack->stack_b != NULL)
+		push_x2y(&(stack->stack_b), &(stack->stack_a), A);
 }
