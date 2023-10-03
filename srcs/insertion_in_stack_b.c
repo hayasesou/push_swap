@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 09:12:47 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/03 16:43:00 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/03 16:46:43 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,11 @@ void	stack_b_insertion_sort(int number_count, t_lists *stack)
 	i = -1;
 	while(++i < number_count)
 	{
-		if ((*stack_b)->content < b_info.min)
-		b_info.min = (*stack_b)->content;
-		if ((*stack_b)->content > b_info.max)
-		b_info.max = (*stack_b)->content;
-		(*stack_b) = (*stack_b)->next;
+		if (stack->stack_b->content < b_info.min)
+		b_info.min = stack->stack_b->content;
+		if (stack->stack_b->content > b_info.max)
+		b_info.max = stack->stack_b->content;
+		stack->stack_b = stack->stack_b->next;
 	}
 
 	while((*stack_b) != NULL)
