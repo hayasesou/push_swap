@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 09:12:47 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/03 16:33:44 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/03 16:43:00 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ void	stack_b_insertion_sort(int number_count, t_lists *stack)
 		set_disatance(&distance, &b_info, &(stack->stack_b));
 		if(distance.from_top <= distance.from_bottom)
 		{
-			while ((*stack_b) != distance.top_position)
+			while (stack->stack_b != distance.top_position)
 				ft_rb(stack_b);
-			if ((*stack_b)->content == b_info.min)
+			if (stack->stack_b->content == b_info.min)
 			{
 				push_x2y(stack_b, stack_a, A);
 				ft_ra(stack_a);
@@ -95,9 +95,9 @@ void	stack_b_insertion_sort(int number_count, t_lists *stack)
 		}
 		else
 		{
-			while ((*stack_b) != distance.bottom_postion)
+			while (stack->stack_b != distance.bottom_postion)
 				ft_rrb(stack_b);
-			if ((*stack_b)->content == b_info.min)
+			if (stack->stack_b->content == b_info.min)
 			{
 				push_x2y(stack_b, stack_a, A);
 				ft_ra(stack_a);
