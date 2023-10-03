@@ -6,13 +6,13 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 15:45:17 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/03 13:28:15 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/03 15:06:02 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "push_swap.h"
 
-static	void	dhandle_stack_number_under_standard(int av_num, t_cd_list **stack_a, t_cd_list **stack_b)
+static	void	handle_stack_number_under_standard(int av_num, t_cd_list **stack_a, t_cd_list **stack_b)
 {
 	stack_b_insertion_sort(av_num, stack_b, stack_a);
 	if (av_num >3)
@@ -140,15 +140,15 @@ void	stack_b_quick_sort(int av_num, t_cd_list **stack_b, t_cd_list **stack_a, in
 }
 
 
-void	quick_sort(int av_num, t_cd_list **stack_a, t_cd_list **stack_b)
+void	quick_sort(int av_num, t_lists *stack)
 {
 	int max;
 	max = 0;
 	if (av_num < 11)
 	{
-		stack_a_insertion_sort(av_num, stack_a, stack_b);
+		stack_a_insertion_sort(av_num, stack);
 		return ;
 	}
-	stack_small_quick_sort(av_num, stack_a, stack_b, &max);
-	stack_large_quick_sort(av_num, stack_a, stack_b, &max);
+	stack_small_quick_sort(av_num, &(stack->stack_a), &(stack->stack_b), &max);
+	stack_large_quick_sort(av_num, &(stack->stack_a), &(stack->stack_b), &max);
 }

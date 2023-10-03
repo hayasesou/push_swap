@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:50:48 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/03 14:24:30 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/03 15:04:10 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void					display_error(void);
 
 //insretion_sort
 void					stack_a_insertion_sort(int number_count,
-							t_cd_list **stack_a, t_cd_list **stack_b);
+							t_lists *stack);
 void					stack_b_insertion_sort(int number_count,
 							t_cd_list **stack_b, t_cd_list **stack_a);
 
@@ -125,8 +125,7 @@ void					stack_b_sort_3number(t_cd_list **stack_b);
 
 //quick_sort
 int						get_pivot(int stack_number, t_cd_list **stack_x);
-void					quick_sort(int av_num, t_cd_list **stack_a,
-							t_cd_list **stack_b);
+void					quick_sort(int av_num, t_lists *stack);
 void					stack_b_quick_sort(int av_num, t_cd_list **stack_b,
 							t_cd_list **stack_a, int *group_id_max);
 void					stack_small_quick_sort(int av_num, t_cd_list **stack_a,
@@ -135,6 +134,6 @@ void					stack_large_quick_sort(int av_num, t_cd_list **stack_a,
 							t_cd_list **stack_b, int *group_id_max);
 
 //utils
-int	check_a(int av_num, t_cd_list **stack_a, int pivot, e_size_a size);
+int	check_a(int av_num, t_cd_list **stack_a, int pivot, t_size_a size);
 
 #endif

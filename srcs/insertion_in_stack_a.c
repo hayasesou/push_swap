@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   insertion_sort.c                                   :+:      :+:    :+:   */
+/*   insertion_in_stack_a.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 14:24:44 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/30 00:55:50 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/03 15:11:39 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,27 +62,28 @@ static void	from_botom(int spot, int i, t_cd_list **stack_a,
 }
 
 static	void	find_first_not_top3(int number_count,
-		t_cd_list **stack_a, t_cd_list **stack_b)
+		t_lists *stack)
 {
-	ft_ra(stack_a);
-	while ((*stack_a)->content >= number_count -3)
-		ft_ra(stack_a);
-	push_x2y(stack_a, stack_b, B);
+	ft_ra(&(stack->stack_a));
+	while (stack->stack_a->content >= number_count -3)
+		ft_ra(&(stack->stack_a));
+	push_x2y(&(stack->stack_a),&(stack->stack_b), B);
 }
 
-void	stack_a_insertion_sort(int number_count, t_cd_list **stack_a,
-			t_cd_list **stack_b)
+void	stack_a_insertion_sort(int number_count, t_lists *stack)
 {
 	int			i;
 	int			j;
 	int			spot;
 	t_cd_list	*tmp;
+	t_cd_list	**stack_a = &(stack->stack_a);
+	t_cd_list	**stack_b = &(stack->stack_b);
 
 	i = 0;
 	if ((*stack_a)->content < number_count - 3)
 		push_x2y(stack_a, stack_b, B);
 	else
-		find_first_not_top3(number_count, stack_a, stack_b);
+		find_first_not_top3(number_count, stack);
 	while (++i < number_count - 3)
 	{
 		while ((*stack_a)->content >= number_count - 3)
