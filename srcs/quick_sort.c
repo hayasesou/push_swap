@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 15:45:17 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/03 16:52:50 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/03 16:54:42 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 static	void	handle_stack_number_under_standard(int av_num, t_lists *stack)
 {
-	t_cd_list **stack_a = &(stack->stack_a);
-	t_cd_list **stack_b = &(stack->stack_b);
 	stack_b_insertion_sort(av_num, stack);
 	if (av_num >3)
 	{
@@ -23,10 +21,10 @@ static	void	handle_stack_number_under_standard(int av_num, t_lists *stack)
 			ft_ra(&(stack->stack_a));
 			ft_ra(&(stack->stack_a));
 	}
-	while ((*stack_b) != NULL)
+	while (stack->stack_b != NULL)
 	{
-		push_x2y(stack_b, stack_a, A);
-		ft_ra(stack_a);
+		push_x2y(&(stack->stack_b), &(stack->stack_a), A);
+		ft_ra(&(stack->stack_a));
 	}
 	return ;
 }
