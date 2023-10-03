@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:45:56 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/03 14:20:30 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/03 16:01:11 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,14 @@ int	get_pivot(int stack_number, t_cd_list ** stack_x)
 	return (ret);
 }
 
-void	stack_small_quick_sort(int av_num, t_cd_list **stack_a, t_cd_list **stack_b, int *group_id_max)
+void	stack_small_quick_sort(int av_num, t_lists *stack, int *group_id_max)
 {
 	int	pivot;
 	int	i;
 	int	push_count;
 	int	count_below_pivot;
+	t_cd_list **stack_a =&(stack->stack_a);
+	t_cd_list **stack_b =&(stack->stack_b);
 
 	push_count = 0;
 	pivot = get_pivot(av_num, stack_a);
@@ -67,12 +69,14 @@ void	stack_small_quick_sort(int av_num, t_cd_list **stack_a, t_cd_list **stack_b
 	stack_b_quick_sort(push_count, stack_b, stack_a, group_id_max);
 }
 
-void	stack_large_quick_sort(int av_num, t_cd_list **stack_a, t_cd_list **stack_b, int *group_id_max)
+void	stack_large_quick_sort(int av_num, t_lists *stack, int *group_id_max)
 {
 	int	pivot;
 	int	i;
 	int	push_count;
 	int	count_above_pivot;
+	t_cd_list **stack_a = &(stack->stack_a);
+	t_cd_list **stack_b = &(stack->stack_b);
 
 	push_count = 0;
 	pivot = get_pivot(av_num, stack_a);
