@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:50:48 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/03 03:11:59 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/03 10:20:07 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,22 +104,29 @@ int						ft_atoi_push_swap(const char *str);
 void					display_error(void);
 
 //insretion_sort
-void					stack_a_insertion_sort(int number_count, t_cd_list **stack_a,
-							t_cd_list **stack_b);
-void					stack_b_insertion_sort(int number_count, t_cd_list **stack_b,
-							t_cd_list **stack_a);
+void					stack_a_insertion_sort(int number_count,
+							t_cd_list **stack_a, t_cd_list **stack_b);
+void					stack_b_insertion_sort(int number_count,
+							t_cd_list **stack_b, t_cd_list **stack_a);
 
+//coordinate_compression
 void					coordinate_compression(t_ints_info *info);
 
+//
 void					check_list_order(t_lists *stack, int av_num);
 void					stack_a_sort_3number(t_cd_list **stack_a);
 void					stack_b_sort_3number(t_cd_list **stack_b);
 
 
-int get_pivot(int stack_number, t_cd_list ** stack_x);
-void					quick_sort(int av_num, t_cd_list **stack_a, t_cd_list **stack_b);
-void	stack_b_quick_sort(int av_num, t_cd_list **stack_b, t_cd_list **stack_a, int *group_id_max);
-void	stack_small_quick_sort(int av_num, t_cd_list **stack_a, t_cd_list **stack_b, int *group_id_max);
-void	stack_large_quick_sort(int av_num, t_cd_list **stack_a, t_cd_list **stack_b, int *group_id_max);
+//quick_sort
+int						get_pivot(int stack_number, t_cd_list **stack_x);
+void					quick_sort(int av_num, t_cd_list **stack_a,
+							t_cd_list **stack_b);
+void					stack_b_quick_sort(int av_num, t_cd_list **stack_b,
+							t_cd_list **stack_a, int *group_id_max);
+void					stack_small_quick_sort(int av_num, t_cd_list **stack_a,
+							t_cd_list **stack_b, int *group_id_max);
+void					stack_large_quick_sort(int av_num, t_cd_list **stack_a,
+							t_cd_list **stack_b, int *group_id_max);
 
 #endif
