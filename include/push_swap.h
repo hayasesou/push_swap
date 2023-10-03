@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:50:48 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/03 13:10:42 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/03 14:24:30 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,27 +32,27 @@
 
 # define BREAK 1
 
-typedef enum type_a
+typedef enum e_type_a
 {
-	large,
-	small
-}			e_size_a;
+	LARGE,
+	SMALL
+}			t_size_a;
 
-typedef struct t_cd_list
+typedef struct s_cd_list
 {
 	int					content;
 	int					group_id;
-	struct t_cd_list	*prev;
-	struct t_cd_list	*next;
+	struct s_cd_list	*prev;
+	struct s_cd_list	*next;
 }						t_cd_list;
 
-typedef struct t_ints_info
+typedef struct s_ints_info
 {
 	int					*number;
 	int					av_num;
 }						t_ints_info;
 
-typedef struct t_lists
+typedef struct s_lists
 {
 	t_cd_list			*stack_a;
 	t_cd_list			*stack_b;
@@ -65,14 +65,14 @@ typedef struct t_top3number
 	int	top3;
 }						t_top3number;
 
-typedef struct t_stack_b
+typedef struct s_stack_b
 {
 	int min;
 	int max;
 	int node_count;
 }						t_stack_b_info;
 
-typedef struct t_distance
+typedef struct s_distance
 {
 	int from_top;
 	int	from_bottom;

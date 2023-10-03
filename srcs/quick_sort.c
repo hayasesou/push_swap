@@ -6,13 +6,13 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 15:45:17 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/03 09:54:31 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/03 13:28:15 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "push_swap.h"
 
-static void handle_stack_number_under_standard(int av_num, t_cd_list **stack_a, t_cd_list **stack_b)
+static	void	dhandle_stack_number_under_standard(int av_num, t_cd_list **stack_a, t_cd_list **stack_b)
 {
 	stack_b_insertion_sort(av_num, stack_b, stack_a);
 	if (av_num >3)

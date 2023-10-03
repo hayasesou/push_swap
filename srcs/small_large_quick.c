@@ -6,31 +6,31 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:45:56 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/03 13:12:18 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/03 14:20:30 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "push_swap.h"
 
-int get_pivot(int stack_number, t_cd_list ** stack_x)
+int	get_pivot(int stack_number, t_cd_list ** stack_x)
 {
 	int	i;
-	int min;
-	int max;
-	int ret;
+	int	min;
+	int	max;
+	int	ret;
 
 	i = -1;
 	min = INT_MAX;
 	max = INT_MIN;
-	while(++i < stack_number)
+	while (++i < stack_number)
 	{
-		if((*stack_x)->content < min)
+		if ((*stack_x)->content < min)
 			min = (*stack_x)->content;
-		if((*stack_x)->content > max)
+		if ((*stack_x)->content > max)
 			max = (*stack_x)->content;
 		(*stack_x) = (*stack_x)->next;
 	}
-	while(i-- > 0)
+	while (i-- > 0)
 		(*stack_x) = (*stack_x)->prev;
 	ret = (max + min) / 2;
 	return (ret);
@@ -41,11 +41,11 @@ void	stack_small_quick_sort(int av_num, t_cd_list **stack_a, t_cd_list **stack_b
 	int	pivot;
 	int	i;
 	int	push_count;
-	int count_below_pivot;
+	int	count_below_pivot;
 
 	push_count = 0;
 	pivot = get_pivot(av_num, stack_a);
-	count_below_pivot = check_a(av_num, stack_a, pivot, small);
+	count_below_pivot = check_a(av_num, stack_a, pivot, SMALL);
 	i = -1;
 	while (++i < av_num)
 	{
@@ -71,14 +71,14 @@ void	stack_large_quick_sort(int av_num, t_cd_list **stack_a, t_cd_list **stack_b
 {
 	int	pivot;
 	int	i;
-	int push_count;
-	int count_above_pivot;
+	int	push_count;
+	int	count_above_pivot;
 
 	push_count = 0;
 	pivot = get_pivot(av_num, stack_a);
-	count_above_pivot = check_a(av_num, stack_a, pivot, large);
+	count_above_pivot = check_a(av_num, stack_a, pivot, LARGE);
 	i = -1;
-	while (++i < av_num /2)
+	while (++i < av_num / 2)
 	{
 		if ((*stack_a)->content > pivot)
 		{
@@ -86,7 +86,7 @@ void	stack_large_quick_sort(int av_num, t_cd_list **stack_a, t_cd_list **stack_b
 			push_x2y(stack_a, stack_b, B);
 			push_count++;
 			if (push_count == count_above_pivot)
-				break;
+				break ;
 		}
 		else
 		{

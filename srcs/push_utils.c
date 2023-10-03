@@ -6,13 +6,13 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:32:59 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/03 12:53:55 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/03 14:24:39 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "push_swap.h"
 
-int	check_a(int av_num, t_cd_list **stack_a, int pivot, e_size_a size)
+int	check_a(int av_num, t_cd_list **stack_a, int pivot, t_size_a size)
 {
 	int	i;
 	int ret;
@@ -35,7 +35,7 @@ int	check_a(int av_num, t_cd_list **stack_a, int pivot, e_size_a size)
 			count_above_pivot++;
 		(*stack_a) = (*stack_a)->next;
 	}
-	if (size == samll)
+	if (size == SMALL)
 		ret = count_below_pivot;
 	else
 		ret = count_above_pivot;
