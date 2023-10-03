@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:45:56 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/03 11:23:40 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/03 13:12:18 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,21 +44,8 @@ void	stack_small_quick_sort(int av_num, t_cd_list **stack_a, t_cd_list **stack_b
 	int count_below_pivot;
 
 	push_count = 0;
-	count_below_pivot = 0;
 	pivot = get_pivot(av_num, stack_a);
-	i = -1;
-
-
-	// ft_prntf("[%d]\n",(*stack_a)->content);
-	while(++i < av_num)
-	{
-		if((*stack_a)->content <= pivot)
-			count_below_pivot++;
-		(*stack_a) = (*stack_a)->next;
-	}
-	// ft_printf("[%d]\n",(*stack_a)->content);
-	// ft_printf("%d\n",count_below_pivot);
-	// exit (0);
+	count_below_pivot = check_a(av_num, stack_a, pivot, small);
 	i = -1;
 	while (++i < av_num)
 	{
@@ -85,18 +72,11 @@ void	stack_large_quick_sort(int av_num, t_cd_list **stack_a, t_cd_list **stack_b
 	int	pivot;
 	int	i;
 	int push_count;
-	int count_upper_pivot;
+	int count_above_pivot;
 
 	push_count = 0;
-	count_upper_pivot = 0;
 	pivot = get_pivot(av_num, stack_a);
-	i = -1;
-	while(++i < av_num)
-	{
-		if((*stack_a)->content > pivot)
-			count_upper_pivot++;
-		(*stack_a) = (*stack_a)->next;
-	}
+	count_above_pivot = check_a(av_num, stack_a, pivot, large);
 	i = -1;
 	while (++i < av_num /2)
 	{
@@ -105,7 +85,7 @@ void	stack_large_quick_sort(int av_num, t_cd_list **stack_a, t_cd_list **stack_b
 			(*stack_a)->group_id = *group_id_max + 1;
 			push_x2y(stack_a, stack_b, B);
 			push_count++;
-			if (push_count == count_upper_pivot)
+			if (push_count == count_above_pivot)
 				break;
 		}
 		else
