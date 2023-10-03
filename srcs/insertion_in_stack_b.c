@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 09:12:47 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/03 16:46:43 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/03 16:51:37 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,6 @@ void	stack_b_insertion_sort(int number_count, t_lists *stack)
 	t_stack_b_info b_info;
 	t_distance distance;
 	int i;
-	t_cd_list **stack_a = &(stack->stack_a);
-	t_cd_list **stack_b = &(stack->stack_b);
-
 
 	b_info.max = INT_MIN;
 	b_info.min = INT_MAX;
@@ -71,24 +68,24 @@ void	stack_b_insertion_sort(int number_count, t_lists *stack)
 		stack->stack_b = stack->stack_b->next;
 	}
 
-	while((*stack_b) != NULL)
+	while(stack->stack_b != NULL)
 	{
 	b_info.node_count = number_count;
 		set_disatance(&distance, &b_info, &(stack->stack_b));
 		if(distance.from_top <= distance.from_bottom)
 		{
 			while (stack->stack_b != distance.top_position)
-				ft_rb(stack_b);
+				ft_rb(&(stack->stack_b));
 			if (stack->stack_b->content == b_info.min)
 			{
-				push_x2y(stack_b, stack_a, A);
-				ft_ra(stack_a);
+				push_x2y(&(stack->stack_b), &(stack->stack_a), A);
+				ft_ra(&(stack->stack_a));
 				b_info.min++;
 				b_info.node_count--;
 			}
 			else
 			{
-				push_x2y(stack_b, stack_a, A);
+				push_x2y(&(stack->stack_b), &(stack->stack_a), A);
 				b_info.max--;
 				b_info.node_count--;
 			}
@@ -96,17 +93,17 @@ void	stack_b_insertion_sort(int number_count, t_lists *stack)
 		else
 		{
 			while (stack->stack_b != distance.bottom_postion)
-				ft_rrb(stack_b);
+				ft_rrb(&(stack->stack_b));
 			if (stack->stack_b->content == b_info.min)
 			{
-				push_x2y(stack_b, stack_a, A);
-				ft_ra(stack_a);
+				push_x2y(&(stack->stack_b), &(stack->stack_a), A);
+				ft_ra(&(stack->stack_a));
 				b_info.min++;
 				b_info.node_count--;
 			}
 			else
 			{
-				push_x2y(stack_b, stack_a, A);
+				push_x2y(&(stack->stack_b), &(stack->stack_a), A);
 				b_info.max--;
 				b_info.node_count--;
 			}
