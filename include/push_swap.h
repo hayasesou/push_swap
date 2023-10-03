@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:50:48 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/01 02:59:37 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/03 03:11:59 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,22 @@ typedef struct t_top3number
 	int	top2;
 	int	top3;
 }						t_top3number;
+
+typedef struct t_stack_b
+{
+	int min;
+	int max;
+	int node_count;
+}						t_stack_b_info;
+
+typedef struct t_distance
+{
+	int from_top;
+	int	from_bottom;
+	t_cd_list *top_position;
+	t_cd_list *bottom_postion;
+}						t_distance;
+
 
 //make list
 void					add_back_doubly(t_cd_list **list, t_cd_list *new);

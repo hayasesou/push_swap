@@ -6,23 +6,11 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 15:45:17 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/02 12:01:23 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/03 09:54:31 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "push_swap.h"
-
-void print_stack(t_cd_list *stack)
-{
-	int x = stack->content;
-
-	dprintf(STDERR_FILENO, "[");
-	do {
-		dprintf(STDERR_FILENO, "%dg%d, ", stack->content, stack->group_id);
-		stack = stack->next;
-	} while(stack->content != x);
-	dprintf(STDERR_FILENO, "]\n");
-}
 
 static void handle_stack_number_under_standard(int av_num, t_cd_list **stack_a, t_cd_list **stack_b)
 {
@@ -135,7 +123,7 @@ void	stack_b_quick_sort(int av_num, t_cd_list **stack_b, t_cd_list **stack_a, in
 	int count_stack_b_node;
 	int group_id;
 
-	if (av_num < 10)
+	if (av_num < 26)
 	{
 		handle_stack_number_under_standard(av_num, stack_a, stack_b);
 		return ;
