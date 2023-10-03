@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 15:45:17 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/03 16:54:42 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/03 17:01:59 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,16 @@ static	void	handle_stack_number_under_standard(int av_num, t_lists *stack)
 static int separate_stack_b(int pivot, t_lists *stack, int *group_id_max)
 {
 	int count_stack_b_node;
-	t_cd_list **stack_a = &(stack->stack_a);
-	t_cd_list **stack_b = &(stack->stack_b);
 
 	count_stack_b_node = 0;
-	if ((*stack_b)->content >= pivot)
+	if (stack->stack_b->content >= pivot)
 	{
-		(*stack_b)->group_id = *group_id_max + 1;
-		push_x2y(stack_b, stack_a, A);
+		stack->stack_b->group_id = *group_id_max + 1;
+		push_x2y(&(stack->stack_b), &(stack->stack_a), A);
 	}
 	else
 	{
-		ft_rb(stack_b);
+		ft_rb(&(stack->stack_b));
 		count_stack_b_node++;
 	}
 	return (count_stack_b_node);
