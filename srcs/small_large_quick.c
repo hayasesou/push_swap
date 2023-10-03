@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:45:56 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/03 16:01:11 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/03 16:17:40 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	stack_small_quick_sort(int av_num, t_lists *stack, int *group_id_max)
 		}
 	}
 	*group_id_max += 1;
-	stack_b_quick_sort(push_count, stack_b, stack_a, group_id_max);
+	stack_b_quick_sort(push_count, stack, group_id_max);
 }
 
 void	stack_large_quick_sort(int av_num, t_lists *stack, int *group_id_max)
@@ -99,6 +99,6 @@ void	stack_large_quick_sort(int av_num, t_lists *stack, int *group_id_max)
 		}
 	}
 	*group_id_max += 1;
-	stack_b_quick_sort(push_count, stack_b, stack_a, group_id_max);
+	stack_b_quick_sort(push_count, stack, group_id_max);
 }
 

@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 15:45:17 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/03 16:10:05 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/03 16:17:03 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,13 @@ static int separate_stack_b(int pivot, t_cd_list **stack_a, t_cd_list **stack_b,
 	return (count_stack_b_node);
 }
 
-static void set_next_block2stack_b(t_cd_list **stack_a, t_cd_list **stack_b, int group_id, int *group_id_max)
+static void set_next_block2stack_b(t_lists *stack, int group_id, int *group_id_max)
 {
 	int count_pb;
 	int min;
 	t_cd_list *tmp;
+	t_cd_list **stack_a = &(stack->stack_a);
+	t_cd_list **stack_b = &(stack->stack_b);
 
 	min = INT_MAX;
 	count_pb = 0;
@@ -113,15 +115,17 @@ static void set_next_block2stack_b(t_cd_list **stack_a, t_cd_list **stack_b, int
 		}
 	}
 	if ((*stack_b) != NULL)
-		stack_b_quick_sort(count_pb, stack_b, stack_a, group_id_max);
+		stack_b_quick_sort(count_pb, stack, group_id_max);
 }
 
-void	stack_b_quick_sort(int av_num, t_cd_list **stack_b, t_cd_list **stack_a, int *group_id_max)
+void	stack_b_quick_sort(int av_num, t_lists *stack, int *group_id_max)
 {
 	int	pivot;
 	int	i;
 	int count_stack_b_node;
 	int group_id;
+	t_cd_list **stack_a = &(stack->stack_a);
+	t_cd_list **stack_b = &(stack->stack_b);
 
 	if (av_num < 26)
 	{
@@ -135,8 +139,8 @@ void	stack_b_quick_sort(int av_num, t_cd_list **stack_b, t_cd_list **stack_a, in
 		count_stack_b_node += separate_stack_b(pivot, stack_a, stack_b, group_id_max);
 	group_id = *group_id_max;
 	*group_id_max += 1;
-	stack_b_quick_sort(count_stack_b_node, stack_b, stack_a, group_id_max);
-	set_next_block2stack_b(stack_a, stack_b, group_id, group_id_max);
+	stack_b_quick_sort(count_stack_b_node, stack, group_id_max);
+	set_next_block2stack_b(stack, group_id, group_id_max);
 }
 
 
