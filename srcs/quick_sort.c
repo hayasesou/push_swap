@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 15:45:17 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/03 16:25:55 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/03 16:28:51 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static	void	handle_stack_number_under_standard(int av_num, t_lists *stack)
 {
 	t_cd_list **stack_a = &(stack->stack_a);
 	t_cd_list **stack_b = &(stack->stack_b);
-	stack_b_insertion_sort(av_num, stack_b, stack_a);
+	stack_b_insertion_sort(av_num, stack);
 	if (av_num >3)
 	{
 		while ((*stack_a)->group_id == (*stack_a)->next->group_id)

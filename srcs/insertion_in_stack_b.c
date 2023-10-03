@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 09:12:47 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/03 10:35:25 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/03 16:33:44 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,14 @@ static void set_disatance(t_distance *distance, t_stack_b_info *b_info, t_cd_lis
 	(*stack_b) = tmp;
 }
 
-void	stack_b_insertion_sort(int number_count, t_cd_list **stack_b, t_cd_list **stack_a)
+void	stack_b_insertion_sort(int number_count, t_lists *stack)
 {
 	t_stack_b_info b_info;
 	t_distance distance;
 	int i;
+	t_cd_list **stack_a = &(stack->stack_a);
+	t_cd_list **stack_b = &(stack->stack_b);
+
 
 	b_info.max = INT_MIN;
 	b_info.min = INT_MAX;
@@ -71,7 +74,7 @@ void	stack_b_insertion_sort(int number_count, t_cd_list **stack_b, t_cd_list **s
 	while((*stack_b) != NULL)
 	{
 	b_info.node_count = number_count;
-		set_disatance(&distance, &b_info, stack_b);
+		set_disatance(&distance, &b_info, &(stack->stack_b));
 		if(distance.from_top <= distance.from_bottom)
 		{
 			while ((*stack_b) != distance.top_position)

@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:50:48 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/03 16:13:44 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/03 16:28:38 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,8 +112,10 @@ void					display_error(void);
 //insretion_sort
 void					stack_a_insertion_sort(int number_count,
 							t_lists *stack);
+//void					stack_b_insertion_sort(int number_count,
+							//t_cd_list **stack_b, t_cd_list **stack_a);
 void					stack_b_insertion_sort(int number_count,
-							t_cd_list **stack_b, t_cd_list **stack_a);
+							t_lists *stack);
 
 //coordinate_compression
 void					coordinate_compression(t_ints_info *info);
