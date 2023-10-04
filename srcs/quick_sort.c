@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 15:45:17 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/04 17:25:45 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/04 17:42:03 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,7 @@ static	void	handle_stack_number_under_standard(int av_num, t_lists *stack)
 	int tmp_group_id = stack->stack_b->group_id;
 	stack_b_insertion_sort(av_num, stack);
 	while (stack->stack_a->group_id == tmp_group_id)
-	{
-		// printf("hello\n");
 		ft_ra(&(stack->stack_a));
-	}
-	//if (av_num >3)
-	//{
-		//while (stack->stack_a->group_id == stack->stack_a->next->group_id)
-		//{
-			//// printf("hello\n");
-			//ft_ra(&(stack->stack_a));
-		//}
-		//ft_ra(&(stack->stack_a));
-	//}
-	//dprintf(2,"\nav_num = [%d]\n",av_num);
-	//Recursive_count++;
-	//debug(av_num, stack);
 	return ;
 }
 
@@ -43,7 +28,6 @@ static int separate_stack_b(int pivot, t_lists *stack, int *group_id_max)
 	int count_stack_b_node;
 
 	count_stack_b_node = 0;
-	// if (stack->stack_b->content >= pivot)
 	if (stack->stack_b->content > pivot)
 	{
 		stack->stack_b->group_id = *group_id_max + 1;
@@ -51,8 +35,6 @@ static int separate_stack_b(int pivot, t_lists *stack, int *group_id_max)
 	}
 	else
 	{
-		// ft_printf("hello\n");
-		// exit(0);
 		ft_rb(&(stack->stack_b));
 		count_stack_b_node++;
 	}
