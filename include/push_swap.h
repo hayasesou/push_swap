@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:50:48 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/05 00:38:32 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/05 03:27:28 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,10 @@ typedef enum e_operation
 	RR,
 	RRA,
 	RRB,
-	RRR
+	RRR,
+	NO,
+	SA_PB,
+	SB_PA
 }			t_operation;
 
 typedef struct s_cd_list

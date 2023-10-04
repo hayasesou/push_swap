@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:27:09 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/05 01:49:03 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/05 07:25:39 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,9 @@ void	set_stack(t_lists *stack, t_ints_info *info)
 	//store_int_info(&info, ac, av);
 	//set_stack(&stack, &info);
 	//sort(info.av_num, &stack);
-	//// clear_all_node(&stack);
-	//return (0);
-//}
+	// clear_all_node(&stack);
+	// return (0);
+// }
 
 //__attribute__((destructor))
 //static void destructor() {

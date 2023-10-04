@@ -6,13 +6,13 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 19:03:02 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/05 02:50:23 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/05 08:30:29 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void clear_all_node(t_lists *stack)
+void clear_all_stack(t_lists *stack)
 {
 	t_cd_list *tmp_a1;
 	t_cd_list *tmp_a2;
@@ -53,6 +53,13 @@ t_instruction *new_instruction(void)
 	return (op);
 }
 
+
+void delete_node(t_lists *stack)
+{
+	free(stack->instruction->operation);
+	free(stack->instruction);
+}
+
 void	clear_all_instruction_list(t_lists *stack)
 {
 	t_instruction *tmp;
@@ -60,10 +67,14 @@ void	clear_all_instruction_list(t_lists *stack)
 	while(stack->instruction != NULL)
 	{
 		tmp = stack->instruction->next;
-		free(tmp);
+		delete_node(stack);
 		stack->instruction = tmp;
 	}
 }
+
+
+// void	optimize_instruction(t_lists *stack, int )
+
 void	set_operation(t_instruction *op_node, t_operation op)
 {
 	if(op == PA)
@@ -90,6 +101,24 @@ void	set_operation(t_instruction *op_node, t_operation op)
 	op_node->operation = ft_strdup("rrr\n");
 }
 
+t_instruction	*add_instruction(t_lists *stack, t_operation op)
+{
+	t_instruction *add;
+	t_instruction *tmp;
+
+	if(stack->instruction == NULL)
+		return (NULL);
+	add = new_instruction();
+	if (add == NULL)
+		return (NULL);
+	set_operation(add, op);
+	tmp = stack->instruction->next;
+	stack->instruction->next = add;
+	add->next = tmp;
+	stack->instruction = stack->instruction->next;
+	return (add);
+}
+
 
 void	make_instructin_list(t_lists *stack, t_operation op)
 {
@@ -100,7 +129,7 @@ void	make_instructin_list(t_lists *stack, t_operation op)
 	if (op_node == NULL)
 	{
 		clear_all_instruction_list(stack);
-		clear_all_node(stack);
+		clear_all_stack(stack);
 		exit (0);
 	}
 	set_operation(op_node, op);
@@ -132,6 +161,23 @@ int main(void)
 	make_instructin_list(&stack, SA);
 	make_instructin_list(&stack, SB);
 	make_instructin_list(&stack, SS);
+
+	t_instruction *first = stack.instruction;
+
+	// for (int k = 0; k < 4; k++)
+	// {
+		// stack.instruction = stack.instruction->next;
+	// }
+	// while (stack.instruction->next != NULL)
+		// stack.instruction = stack.instruction->next;
+	ft_printf("hello\n");
+	add_instruction(&stack, PA);
+	add_instruction(&stack, SS);
+	add_instruction(&stack, PB);
+	add_instruction(&stack, RA);
+	add_instruction(&stack, RR);
+	stack.instruction = first;
+
 	while (stack.instruction != NULL)
 	{
 		ft_printf("%s",stack.instruction->operation);
