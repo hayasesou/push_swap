@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 15:45:17 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/04 17:42:03 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/04 17:52:56 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,48 +59,48 @@ static void set_next_block2stack_b(t_lists *stack, int group_id, int *group_id_m
 	stack->stack_a = tmp;
 	while (stack->stack_a->group_id == group_id + 1)
 	{
-		//if (stack->stack_a->content == min)
-		//{
-			//ft_ra(&(stack->stack_a));
-			//min +=1;
-		//}
-		//else if (stack->stack_a->content == min +1 && stack->stack_a->next->content == min)
-		//{
-			//ft_sa(&(stack->stack_a));
-			//ft_ra(&(stack->stack_a));
-			//ft_ra(&(stack->stack_a));
-			//min += 2;
-		//}
-		//else if(stack->stack_a->content == min +1 && stack->stack_a->next->content == min +2 && stack->stack_a->next->next->content == min)
-		//{
-			//push_x2y(&(stack->stack_a), &(stack->stack_b), B);
-			//ft_sa(&(stack->stack_a));
-			//ft_ra(&(stack->stack_a));
-			//push_x2y(&(stack->stack_b), &(stack->stack_a), A);
-			//ft_ra(&(stack->stack_a));
-			//ft_ra(&(stack->stack_a));
-			//min += 3;
-		//}
-		//else if(stack->stack_a->content == min + 2 && stack->stack_a->next->content == min && stack->stack_a->next->next->content == min +1)
-		//{
-			//push_x2y(&(stack->stack_a), &(stack->stack_b) , B);
-			//ft_ra(&(stack->stack_a));
-			//ft_ra(&(stack->stack_a));
-			//push_x2y(&(stack->stack_b), &(stack->stack_a), A);
-			//ft_ra(&(stack->stack_a));
-			//min += 3;
-		//}
-		//else if(stack->stack_a->content == min + 2 && stack->stack_a->next->content == min +1 && stack->stack_a->next->next->content == min)
-		//{
-			//push_x2y(&(stack->stack_a), &(stack->stack_b) , B);
-			//ft_sa(&(stack->stack_a));
-			//ft_ra(&(stack->stack_a));
-			//ft_ra(&(stack->stack_a));
-			//push_x2y((&stack->stack_b), &(stack->stack_a), A);
-			//ft_ra(&(stack->stack_a));
-			//min += 3;
-		//}
-		//else
+		if (stack->stack_a->content == min)
+		{
+			ft_ra(&(stack->stack_a));
+			min +=1;
+		}
+		else if (stack->stack_a->content == min +1 && stack->stack_a->next->content == min)
+		{
+			ft_sa(&(stack->stack_a));
+			ft_ra(&(stack->stack_a));
+			ft_ra(&(stack->stack_a));
+			min += 2;
+		}
+		else if(stack->stack_a->content == min +1 && stack->stack_a->next->content == min +2 && stack->stack_a->next->next->content == min)
+		{
+			push_x2y(&(stack->stack_a), &(stack->stack_b), B);
+			ft_sa(&(stack->stack_a));
+			ft_ra(&(stack->stack_a));
+			push_x2y(&(stack->stack_b), &(stack->stack_a), A);
+			ft_ra(&(stack->stack_a));
+			ft_ra(&(stack->stack_a));
+			min += 3;
+		}
+		else if(stack->stack_a->content == min + 2 && stack->stack_a->next->content == min && stack->stack_a->next->next->content == min +1)
+		{
+			push_x2y(&(stack->stack_a), &(stack->stack_b) , B);
+			ft_ra(&(stack->stack_a));
+			ft_ra(&(stack->stack_a));
+			push_x2y(&(stack->stack_b), &(stack->stack_a), A);
+			ft_ra(&(stack->stack_a));
+			min += 3;
+		}
+		else if(stack->stack_a->content == min + 2 && stack->stack_a->next->content == min +1 && stack->stack_a->next->next->content == min)
+		{
+			push_x2y(&(stack->stack_a), &(stack->stack_b) , B);
+			ft_sa(&(stack->stack_a));
+			ft_ra(&(stack->stack_a));
+			ft_ra(&(stack->stack_a));
+			push_x2y((&stack->stack_b), &(stack->stack_a), A);
+			ft_ra(&(stack->stack_a));
+			min += 3;
+		}
+		else
 		{
 		push_x2y(&(stack->stack_a), &(stack->stack_b), B);
 		count_pb++;
@@ -134,8 +134,6 @@ void	stack_b_quick_sort(int av_num, t_lists *stack, int *group_id_max)
 	*group_id_max += 1;
 	stack_b_quick_sort(count_stack_b_node, stack, group_id_max);
 	set_next_block2stack_b(stack, group_id, group_id_max);
-	// ft_printf("hello\n");
-	// exit (0);
 }
 
 
