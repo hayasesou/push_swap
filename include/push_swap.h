@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:50:48 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/04 20:37:12 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/05 00:38:32 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,22 @@ typedef enum e_type_a
 	SMALL
 }			t_size_a;
 
+
+typedef enum e_operation
+{
+	PA,
+	PB,
+	SA,
+	SB,
+	SS,
+	RA,
+	RB,
+	RR,
+	RRA,
+	RRB,
+	RRR
+}			t_operation;
+
 typedef struct s_cd_list
 {
 	int					content;
@@ -53,16 +69,24 @@ typedef struct s_ints_info
 	int					av_num;
 }						t_ints_info;
 
-typedef struct s_instruction_list
+typedef struct s_instruction
 {
-	char				*instruction;
-	struct	s_instruction_list *next;
+	char				*operation;
+	struct	s_instruction		*next;
 }						t_instruction;
+
+//typedef struct s_lists
+//{
+	//t_cd_list			*stack_a;
+	//t_cd_list			*stack_b;
+//}						t_lists;
+
 
 typedef struct s_lists
 {
 	t_cd_list			*stack_a;
 	t_cd_list			*stack_b;
+	t_instruction		*instruction;
 }						t_lists;
 
 typedef struct t_top3number

@@ -6,13 +6,11 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 15:45:17 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/04 17:52:56 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/04 23:22:16 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "push_swap.h"
-
-int	Recursive_count = 0;
 
 static	void	handle_stack_number_under_standard(int av_num, t_lists *stack)
 {
