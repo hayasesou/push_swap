@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:27:09 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/03 18:07:47 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/04 23:17:02 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ int	main(int ac, char **av)
 	store_int_info(&info, ac, av);
 	set_stack(&stack, &info);
 	sort(info.av_num, &stack);
+	// clear_all_node(&stack);
 	return (0);
 }
 

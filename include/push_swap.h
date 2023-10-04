@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:50:48 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/04 14:32:17 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/04 20:37:12 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,12 @@ typedef struct s_ints_info
 	int					*number;
 	int					av_num;
 }						t_ints_info;
+
+typedef struct s_instruction_list
+{
+	char				*instruction;
+	struct	s_instruction_list *next;
+}						t_instruction;
 
 typedef struct s_lists
 {
@@ -140,5 +146,6 @@ int	check_b(int av_num, t_cd_list **stack_b, int pivot);
 
 
 void debug(int av_num, t_lists *stack);
+void  clear_all_node(t_lists *stack);
 
 #endif
