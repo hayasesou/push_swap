@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 14:59:17 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/26 09:27:24 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/04 02:02:54 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,61 +71,3 @@ void	push_x2y(t_cd_list **x, t_cd_list **y, int type)
 	if (type == B)
 		ft_printf("pb\n");
 }
-
-//int	main	(void)
-//{
-//t_cd_list	*list;
-//int			*tmp;
-//int			count;
-//t_ints_info	int_info1,int_info2;
-
-//count = 0;
-//int_info1.av_num = 1000;
-//int_info2.av_num = 1;
-//int_info1.number = (int *)malloc(sizeof(int) * int_info1.av_num);
-//int_info2.number = (int *)malloc(sizeof(int) * int_info2.av_num);
-//tmp = int_info1.number;
-//while (count < int_info1.av_num)
-//{
-//*(int_info1.number) = count;
-//count++;
-//int_info1.number++;
-//}
-
-//int_info1.number = tmp;
-//list = make_circular_doubly(&int_info1);
-//int i = 0;
-//t_cd_list *y;
-//count = 0;
-//while (count < int_info2.av_num)
-//{
-//*(int_info2.number) = count;
-//count++;
-//}
-//y = make_circular_doubly(&int_info2);
-
-//push_x2y(&list, &y);
-////ft_printf("[%d]\n",list->content);
-//while(i< 4)
-//{
-//printf("[%d]\n",y->content);
-//y = y->next;
-//i++;
-//}
-
-//i = 0;
-////while(i < 1000)
-////{
-////printf("[%d]\n", (list->content));
-////list = list->prev;
-////i++;
-////}
-//ft_printf("hello\n");
-//while(i < 1000)
-//{
-//printf("[%d]\n", (list->content));
-//list = list->prev;
-//i++;
-//}
-//return (0);
-//}

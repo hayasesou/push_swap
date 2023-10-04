@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:50:48 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/03 16:28:38 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/04 14:32:17 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <limits.h>
 # include <stdlib.h>
 # include <libc.h>
+# include <stdio.h>
 
 # define NEXT 1
 # define PREV 0
@@ -134,5 +135,10 @@ void					stack_large_quick_sort(int av_num, t_lists *stack, int *group_id_max);
 
 //utils
 int	check_a(int av_num, t_cd_list **stack_a, int pivot, t_size_a size);
+int	check_b(int av_num, t_cd_list **stack_b, int pivot);
+
+
+
+void debug(int av_num, t_lists *stack);
 
 #endif
