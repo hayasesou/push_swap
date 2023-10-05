@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:27:09 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/05 14:10:03 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/05 17:51:38 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ static void sort(int av_num, t_lists *stack)
 	if (av_num == 2)
 	{
 		ft_ra(stack);
-		// ft_ra(&(stack->stack_a));
 		return ;
 	}
 	else if (av_num == 3)
@@ -102,13 +101,16 @@ int	main(int ac, char **av)
 	store_int_info(&info, ac, av);
 	set_stack(&stack, &info);
 	sort(info.av_num, &stack);
-	clear_all_stack(&stack);
+	dprintf(STDERR_FILENO, "before: %p\n", stack.instruction);
+	optimize_instruction(&stack);
+	dprintf(STDERR_FILENO, "after: %p\n", stack.instruction);
 	while(stack.instruction->next != NULL)
 	{
 	ft_printf("%s", stack.instruction->operation);
 		stack.instruction = stack.instruction->next;
 	}
 	ft_printf("%s", stack.instruction->operation);
+	clear_all_stack(&stack);
 	clear_all_instruction_list(&stack);
 	return (0);
 }

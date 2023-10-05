@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:50:48 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/05 13:34:44 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/05 17:46:16 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,16 @@ typedef enum e_operation
 	RRA,
 	RRB,
 	RRR,
-	NO,
-	SA_PB,
-	SB_PA
 }			t_operation;
+
+typedef enum e_optimize
+{
+	PX_PY,
+	RX_RY,
+	SX_SY,
+	RRX_RRY,
+
+}			t_optimize;
 
 typedef struct s_cd_list
 {
@@ -78,12 +84,6 @@ typedef struct s_instruction
 	struct	s_instruction		*prev;
 	struct	s_instruction		*next;
 }						t_instruction;
-
-//typedef struct s_lists
-//{
-	//t_cd_list			*stack_a;
-	//t_cd_list			*stack_b;
-//}						t_lists;
 
 
 typedef struct s_lists
@@ -158,8 +158,8 @@ void					coordinate_compression(t_ints_info *info);
 
 //
 void					check_list_order(t_lists *stack, int av_num);
-void					stack_a_sort_3number(t_lists *satck);
-void					stack_b_sort_3number(t_cd_list **stack_b);
+void					stack_a_sort_3number(t_lists *stack);
+void					stack_b_sort_3number(t_lists *stack);
 
 //quick_sort
 int						get_pivot(int stack_number, t_cd_list **stack_x);
@@ -184,5 +184,6 @@ void	pull_out_instruction(t_lists *stack);
 void	set_operation(t_instruction *op_node, t_operation op);
 t_instruction	*add_instruction(t_lists *stack, t_operation op);
 void	make_instructin_list(t_lists *stack, t_operation op);
+void	optimize_instruction(t_lists *stack);
 
 #endif

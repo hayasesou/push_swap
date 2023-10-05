@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 19:03:02 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/05 13:29:25 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/05 18:18:29 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,6 @@ t_instruction	*add_instruction(t_lists *stack, t_operation op)
 	return (add);
 }
 
-
 void	make_instructin_list(t_lists *stack, t_operation op)
 {
 	t_instruction *op_node;
@@ -170,6 +169,37 @@ void	make_instructin_list(t_lists *stack, t_operation op)
 		op_node->prev = stack->instruction;
 		stack->instruction = first_op_node;
 	}
+}
+
+void	optimize_instruction(t_lists *stack)
+{
+	t_instruction *first;
+
+	first = stack->instruction;
+	// ft_printf("%s",stack->instruction->operation);
+	while(stack->instruction != NULL)
+	{
+		if (stack->instruction->next && stack->instruction->next->next)
+		;
+		else
+		break;
+		if(strncmp(stack->instruction->next->operation, "ra\n", 3) == 0 && strncmp(stack->instruction->next->next->operation ,"rb\n", 3) == 0)
+		{
+			add_instruction(stack, RR);
+			stack->instruction =stack->instruction->next;
+			pull_out_instruction(stack);
+			pull_out_instruction(stack);
+			continue;
+		}
+		if(strncmp(stack->instruction->operation, "pb\n", 3) == 0 && strncmp(stack->instruction->next->operation ,"pa\n", 3) == 0)
+		{
+			pull_out_instruction(stack);
+			pull_out_instruction(stack);
+			continue ;
+		}
+		stack->instruction = stack->instruction->next;
+	}
+	stack->instruction = first;
 }
 
 //int main(void)
