@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:50:48 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/05 21:33:02 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/06 03:43:16 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,10 +103,20 @@ typedef struct t_top3number
 	int	top3;
 }						t_top3number;
 
+//typedef struct s_stack_b
+//{
+	//int min;
+	//int max;
+	//int node_count;
+//}						t_stack_b_info;
+
+
 typedef struct s_stack_b
 {
 	int min;
 	int max;
+	int min_plusone;
+	int max_minusone;
 	int node_count;
 }						t_stack_b_info;
 

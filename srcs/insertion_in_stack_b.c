@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 09:12:47 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/05 13:45:06 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/06 06:06:00 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ void	stack_b_insertion_sort(int number_count, t_lists *stack)
 		b_info.max = stack->stack_b->content;
 		stack->stack_b = stack->stack_b->next;
 	}
+	b_info.min_plusone = b_info.min + 1;
+	b_info.max_minusone = b_info.max - 1;
 
 	while(stack->stack_b != NULL)
 	{
@@ -74,8 +76,23 @@ void	stack_b_insertion_sort(int number_count, t_lists *stack)
 	set_disatance(&distance, &b_info, &(stack->stack_b));
 		if(distance.from_top <= distance.from_bottom)
 		{
+			//while (stack->stack_b != distance.top_position)
+			//{
+				//ft_rb(stack);
+			//}
 			while (stack->stack_b != distance.top_position)
 			{
+				if (stack->stack_b->content == b_info.min_plusone && stack->stack_b->next->content == b_info.min )
+				{
+					push_x2y(&(stack->stack_b), &(stack->stack_a), A, stack);
+					push_x2y(&(stack->stack_b), &(stack->stack_a), A, stack);
+					ft_ra(stack);
+					ft_ra(stack);
+					b_info.min += 2;
+					b_info.min_plusone +=2;
+					b_info.node_count -= 2;
+					break;
+				}
 				ft_rb(stack);
 			}
 			if (stack->stack_b->content == b_info.min)
@@ -83,9 +100,10 @@ void	stack_b_insertion_sort(int number_count, t_lists *stack)
 				push_x2y(&(stack->stack_b), &(stack->stack_a), A, stack);
 				ft_ra(stack);
 				b_info.min++;
+				b_info.min_plusone++;
 				b_info.node_count--;
 			}
-			else
+			else if (stack->stack_b->content == b_info.max)
 			{
 				push_x2y(&(stack->stack_b), &(stack->stack_a), A, stack);
 				b_info.max--;
@@ -101,6 +119,7 @@ void	stack_b_insertion_sort(int number_count, t_lists *stack)
 				push_x2y(&(stack->stack_b), &(stack->stack_a), A, stack);
 				ft_ra(stack);
 				b_info.min++;
+				b_info.min_plusone++;
 				b_info.node_count--;
 			}
 			else

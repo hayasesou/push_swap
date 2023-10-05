@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 11:22:04 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/27 17:54:04 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/06 04:47:33 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,19 @@ void	coordinate_compression(t_ints_info *info)
 	}
 	free(info->number);
 	info->number = coordinate_compression;
+
+
+	///
+	FILE *fp = fopen("s.txt","a");
+	if(fp == NULL){
+		dprintf(2,"open error\n");
+		exit (1);
+	}
+	fprintf(fp,"\nargument\n");
+	for(int k = 0; k < info->av_num ;k++)
+	fprintf(fp,"%d ",info->number[k]);
+	fclose(fp);
+	// exit (0);
+	///
+
 }
