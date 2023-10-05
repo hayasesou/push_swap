@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:50:48 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/05 17:46:16 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/05 21:33:02 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@
 
 # define BREAK 1
 
+// # define insertion_standard 26
+
 typedef enum e_type_a
 {
 	LARGE,
@@ -55,14 +57,14 @@ typedef enum e_operation
 	RRR,
 }			t_operation;
 
-typedef enum e_optimize
-{
-	PX_PY,
-	RX_RY,
-	SX_SY,
-	RRX_RRY,
+//typedef enum e_optimize
+//{
+	//PX_PY,
+	//RX_RY,
+	//SX_SY,
+	//RRX_RRY,
 
-}			t_optimize;
+//}			t_optimize;
 
 typedef struct s_cd_list
 {
@@ -91,6 +93,7 @@ typedef struct s_lists
 	t_cd_list			*stack_a;
 	t_cd_list			*stack_b;
 	t_instruction		*instruction;
+	int					list_min;
 }						t_lists;
 
 typedef struct t_top3number

@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:27:09 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/05 17:51:38 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/06 00:36:32 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ int	main(int ac, char **av)
 	t_ints_info	info;
 
 	stack.instruction = NULL;
+	stack.list_min = 0;
 	if (ac == 1)
 		return (1);
 	info.number = (int *)malloc(sizeof(int) * (ac - 1));
@@ -101,9 +102,7 @@ int	main(int ac, char **av)
 	store_int_info(&info, ac, av);
 	set_stack(&stack, &info);
 	sort(info.av_num, &stack);
-	dprintf(STDERR_FILENO, "before: %p\n", stack.instruction);
 	optimize_instruction(&stack);
-	dprintf(STDERR_FILENO, "after: %p\n", stack.instruction);
 	while(stack.instruction->next != NULL)
 	{
 	ft_printf("%s", stack.instruction->operation);

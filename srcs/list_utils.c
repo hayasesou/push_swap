@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 19:03:02 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/05 20:09:19 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/06 03:19:39 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,18 +171,59 @@ void	make_instructin_list(t_lists *stack, t_operation op)
 	}
 }
 
+
+void	optimize_pxpb(t_lists *stack)
+{
+	t_instruction *tmp;
+	int 			pb_count;
+	int				pa_count;
+	int				i;
+	int				j;
+
+	i = 0;
+	j = -1;
+	pb_count = 0;
+	pa_count = 0;
+	tmp = stack->instruction;
+	while(stack->instruction != NULL && ft_strncmp(stack->instruction->operation, "pb\n",3)== 0)
+	{
+		pb_count++;
+		stack->instruction = stack->instruction->next;
+	}
+	while(stack->instruction != NULL && ft_strncmp(stack->instruction->operation, "pa\n",3) == 0)
+	{
+		pa_count++;
+		if (pa_count == pb_count)
+			break;
+		stack->instruction =stack->instruction->next;
+	}
+	stack->instruction = tmp;
+	if (pb_count > 0 && pa_count > 0)
+	{
+		while(i < pb_count - pa_count)
+		{
+			i++;
+			stack->instruction = stack->instruction->next;
+		}
+		j = 2 * pa_count;
+		while( j-- > 0)
+		pull_out_instruction(stack);
+	}
+}
+
 void	optimize_instruction(t_lists *stack)
 {
 	t_instruction *first;
 
 	first = stack->instruction;
-	// ft_printf("%s",stack->instruction->operation);
 	while(stack->instruction != NULL)
 	{
 		if (stack->instruction->next && stack->instruction->next->next && stack->instruction->next->next->next)
 		;
 		else
 		break;
+
+		optimize_pxpb(stack);
 		if(ft_strncmp(stack->instruction->next->operation, "ra\n", 3) == 0 && ft_strncmp(stack->instruction->next->next->operation ,"rb\n", 3) == 0)
 		{
 			add_instruction(stack, RR);
@@ -191,12 +232,12 @@ void	optimize_instruction(t_lists *stack)
 			pull_out_instruction(stack);
 			continue;
 		}
-		if(ft_strncmp(stack->instruction->operation, "pb\n", 3) == 0 && ft_strncmp(stack->instruction->next->operation ,"pa\n", 3) == 0)
-		{
-			pull_out_instruction(stack);
-			pull_out_instruction(stack);
-			continue ;
-		}
+		//// if(ft_strncmp(stack->instruction->operation, "pb\n", 3) == 0 && ft_strncmp(stack->instruction->next->operation ,"pa\n", 3) == 0)
+		//{
+			//pull_out_instruction(stack);
+			//pull_out_instruction(stack);
+			//continue ;
+		//}
 		if(ft_strncmp(stack->instruction->next->operation, "rb\n", 3) == 0 && ft_strncmp(stack->instruction->next->next->operation ,"pa\n", 3) == 0 && ft_strncmp(stack->instruction->next->next->next->operation ,"rrb\n", 3) == 0)
 		{
 			add_instruction(stack, SB);
