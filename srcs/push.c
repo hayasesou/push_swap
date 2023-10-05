@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 14:59:17 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/04 23:21:56 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/05 13:24:10 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	push_x(t_cd_list **list, t_cd_list *x)
 //x is top of stack
 //y is top of stack
 //Take the first element at the top of x and put it at the top of y
-void	push_x2y(t_cd_list **x, t_cd_list **y, int type)
+void	push_x2y(t_cd_list **x, t_cd_list **y, int type, t_lists *stack)
 {
 	t_cd_list	*get;
 
@@ -67,7 +67,9 @@ void	push_x2y(t_cd_list **x, t_cd_list **y, int type)
 		return ;
 	push_x(y, get);
 	if (type == A)
-		ft_printf("pa\n");
+		make_instructin_list(stack, PA);
+		// ft_printf("pa\n");
 	if (type == B)
-		ft_printf("pb\n");
+		make_instructin_list(stack, PB);
+		// ft_printf("pb\n");
 }

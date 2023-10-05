@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:50:48 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/05 12:10:34 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/05 13:34:44 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,24 +122,25 @@ t_cd_list				*new_doubly(void);
 t_cd_list				*make_circular_doubly(t_ints_info *info);
 
 //swap top of list and next
-void					ft_sa(t_cd_list **stack_a);
-void					ft_sb(t_cd_list **stack_b);
-void					ft_ss(t_cd_list **x, t_cd_list **y);
+void					ft_sa(t_lists *stack);
+void					ft_sb(t_lists *stack);
+void					ft_ss(t_lists *satck);
 
 //push top of x to y
 //afte this func , top of list is next ptr of what used to be
-void					push_x2y(t_cd_list **x, t_cd_list **y, int type);
+void					push_x2y(t_cd_list **x, t_cd_list **y, int type, t_lists *stack);
 
 //shift up.
 // top of list is next ptr of current list
-void					ft_ra(t_cd_list **stack_a);
-void					ft_rb(t_cd_list **stack_b);
-void					ft_rr(t_cd_list **x, t_cd_list **y);
+// void					ft_ra(t_cd_list **stack_a);
+void					ft_ra(t_lists *stack);
+void					ft_rb(t_lists *stack);
+void					ft_rr(t_lists *stack);
 
 //shift down
-void					ft_rra(t_cd_list **stack_a);
-void					ft_rrb(t_cd_list **stack_b);
-void					ft_rrr(t_cd_list **x, t_cd_list **y);
+void					ft_rra(t_lists *stack);
+void					ft_rrb(t_lists *stack);
+void					ft_rrr(t_lists *stack);
 
 int						ft_atoi_push_swap(const char *str);
 void					display_error(void);
@@ -157,7 +158,7 @@ void					coordinate_compression(t_ints_info *info);
 
 //
 void					check_list_order(t_lists *stack, int av_num);
-void					stack_a_sort_3number(t_cd_list **stack_a);
+void					stack_a_sort_3number(t_lists *satck);
 void					stack_b_sort_3number(t_cd_list **stack_b);
 
 //quick_sort

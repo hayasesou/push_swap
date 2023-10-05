@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:45:56 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/04 15:20:56 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/05 13:43:09 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	stack_small_quick_sort(int av_num, t_lists *stack, int *group_id_max)
 		if (stack->stack_a->content <= pivot)
 		{
 			stack->stack_a->group_id = *group_id_max + 1;
-			push_x2y(&(stack->stack_a), &(stack->stack_b), B);
+			push_x2y(&(stack->stack_a), &(stack->stack_b), B, stack);
 			push_count++;
 			if (push_count == count_below_pivot)
 				break ;
@@ -60,7 +60,7 @@ void	stack_small_quick_sort(int av_num, t_lists *stack, int *group_id_max)
 		else
 		{
 			stack->stack_a->group_id = *group_id_max;
-			ft_ra(&(stack->stack_a));
+			ft_ra(stack);
 		}
 	}
 	*group_id_max += 1;
@@ -83,7 +83,7 @@ void	stack_large_quick_sort(int av_num, t_lists *stack, int *group_id_max)
 		if (stack->stack_a->content > pivot)
 		{
 			stack->stack_a->group_id = *group_id_max + 1;
-			push_x2y(&(stack->stack_a), &(stack->stack_b), B);
+			push_x2y(&(stack->stack_a), &(stack->stack_b), B, stack);
 			push_count++;
 			if (push_count == count_above_pivot)
 				break ;
@@ -91,7 +91,7 @@ void	stack_large_quick_sort(int av_num, t_lists *stack, int *group_id_max)
 		else
 		{
 			stack->stack_a->group_id = *group_id_max;
-			ft_ra(&(stack->stack_a));
+			ft_ra(stack);
 		}
 	}
 	*group_id_max += 1;

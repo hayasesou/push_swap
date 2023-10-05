@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 15:45:17 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/04 23:22:16 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/05 13:48:28 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static	void	handle_stack_number_under_standard(int av_num, t_lists *stack)
 	int tmp_group_id = stack->stack_b->group_id;
 	stack_b_insertion_sort(av_num, stack);
 	while (stack->stack_a->group_id == tmp_group_id)
-		ft_ra(&(stack->stack_a));
+		ft_ra(stack);
 	return ;
 }
 
@@ -29,11 +29,11 @@ static int separate_stack_b(int pivot, t_lists *stack, int *group_id_max)
 	if (stack->stack_b->content > pivot)
 	{
 		stack->stack_b->group_id = *group_id_max + 1;
-		push_x2y(&(stack->stack_b), &(stack->stack_a), A);
+		push_x2y(&(stack->stack_b), &(stack->stack_a), A, stack);
 	}
 	else
 	{
-		ft_rb(&(stack->stack_b));
+		ft_rb(stack);
 		count_stack_b_node++;
 	}
 	return (count_stack_b_node);
@@ -59,48 +59,48 @@ static void set_next_block2stack_b(t_lists *stack, int group_id, int *group_id_m
 	{
 		if (stack->stack_a->content == min)
 		{
-			ft_ra(&(stack->stack_a));
+			ft_ra(stack);
 			min +=1;
 		}
 		else if (stack->stack_a->content == min +1 && stack->stack_a->next->content == min)
 		{
-			ft_sa(&(stack->stack_a));
-			ft_ra(&(stack->stack_a));
-			ft_ra(&(stack->stack_a));
+			ft_sa(stack);
+			ft_ra(stack);
+			ft_ra(stack);
 			min += 2;
 		}
 		else if(stack->stack_a->content == min +1 && stack->stack_a->next->content == min +2 && stack->stack_a->next->next->content == min)
 		{
-			push_x2y(&(stack->stack_a), &(stack->stack_b), B);
-			ft_sa(&(stack->stack_a));
-			ft_ra(&(stack->stack_a));
-			push_x2y(&(stack->stack_b), &(stack->stack_a), A);
-			ft_ra(&(stack->stack_a));
-			ft_ra(&(stack->stack_a));
+			push_x2y(&(stack->stack_a), &(stack->stack_b), B, stack);
+			ft_sa(stack);
+			ft_ra(stack);
+			push_x2y(&(stack->stack_b), &(stack->stack_a), A, stack);
+			ft_ra(stack);
+			ft_ra(stack);
 			min += 3;
 		}
 		else if(stack->stack_a->content == min + 2 && stack->stack_a->next->content == min && stack->stack_a->next->next->content == min +1)
 		{
-			push_x2y(&(stack->stack_a), &(stack->stack_b) , B);
-			ft_ra(&(stack->stack_a));
-			ft_ra(&(stack->stack_a));
-			push_x2y(&(stack->stack_b), &(stack->stack_a), A);
-			ft_ra(&(stack->stack_a));
+			push_x2y(&(stack->stack_a), &(stack->stack_b) , B, stack);
+			ft_ra(stack);
+			ft_ra(stack);
+			push_x2y(&(stack->stack_b), &(stack->stack_a), A, stack);
+			ft_ra(stack);
 			min += 3;
 		}
 		else if(stack->stack_a->content == min + 2 && stack->stack_a->next->content == min +1 && stack->stack_a->next->next->content == min)
 		{
-			push_x2y(&(stack->stack_a), &(stack->stack_b) , B);
-			ft_sa(&(stack->stack_a));
-			ft_ra(&(stack->stack_a));
-			ft_ra(&(stack->stack_a));
-			push_x2y((&stack->stack_b), &(stack->stack_a), A);
-			ft_ra(&(stack->stack_a));
+			push_x2y(&(stack->stack_a), &(stack->stack_b) , B, stack);
+			ft_sa(stack);
+			ft_ra(stack);
+			ft_ra(stack);
+			push_x2y((&stack->stack_b), &(stack->stack_a), A, stack);
+			ft_ra(stack);
 			min += 3;
 		}
 		else
 		{
-		push_x2y(&(stack->stack_a), &(stack->stack_b), B);
+		push_x2y(&(stack->stack_a), &(stack->stack_b), B, stack);
 		count_pb++;
 		}
 	}

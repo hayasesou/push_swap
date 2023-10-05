@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 19:03:02 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/05 12:12:32 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/05 13:29:25 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,51 +172,52 @@ void	make_instructin_list(t_lists *stack, t_operation op)
 	}
 }
 
-int main(void)
-{
-	t_lists stack;
+//int main(void)
+//{
+	//t_lists stack;
+	//// t_cd_list stack_a;
+	//// t_cd_list stack_b;
 
-	stack.instruction = NULL;
-	//make_instructin_list(&stack, PB);
-	//make_instructin_list(&stack, PA);
-	//make_instructin_list(&stack, RA);
-	//make_instructin_list(&stack, RB);
-	//make_instructin_list(&stack, RR);
-	//make_instructin_list(&stack, RRA);
-	//make_instructin_list(&stack, RRB);
-	//make_instructin_list(&stack, RRR);
-	//make_instructin_list(&stack, SA);
-	//make_instructin_list(&stack, SB);
-	//make_instructin_list(&stack, SS);
+	//stack.instruction = NULL;
+	//// stack.stack_a = &stack_a;
+	//// stack.stack_b = &stack_b;
+	//ft_ra(&stack);
+	//ft_rb(&stack);
+	//ft_rr(&stack);
+	//ft_rra(&stack);
+	//ft_rrb(&stack);
+	//ft_rrr(&stack);
+	//ft_sa(&stack);
+	//ft_sb(&stack);
+	//ft_ss(&stack);
 
-	t_instruction *first = stack.instruction;
-	// while (stack.instruction->next != NULL)
-	//  stack.instruction = stack.instruction->next;
-	//for (int k = 0; k < 3; k++)
-	//{
-		//stack.instruction = stack.instruction->next;
-	//}
-	//add_instruction(&stack, RA);
-	//pull_out_instruction(&stack);
-	//add_instruction(&stack, RB);
-	//pull_out_instruction(&stack);
-	//add_instruction(&stack, RRA);
-	//pull_out_instruction(&stack);
-	//add_instruction(&stack, SA);
-	//add_instruction(&stack, PB);
-	stack.instruction = first;
+	//t_instruction *first = stack.instruction;
+	//// while (stack.instruction->next != NULL)
+	////  stack.instruction = stack.instruction->next;
+	////for (int k = 0; k < 3; k++)
+	////{
+		////stack.instruction = stack.instruction->next;
+	////}
+	////add_instruction(&stack, RA);
+	////pull_out_instruction(&stack);
+	////add_instruction(&stack, RB);
+	////pull_out_instruction(&stack);
+	////add_instruction(&stack, RRA);
+	////pull_out_instruction(&stack);
+	////add_instruction(&stack, SA);
+	////add_instruction(&stack, PB);
+	//stack.instruction = first;
 
-	while (stack.instruction->next!= NULL)
-	{
-		ft_printf("%s",stack.instruction->operation);
-		stack.instruction = stack.instruction->next;
-	}
-	ft_printf("%s",stack.instruction->operation);
-	// ft_printf("\n");
-	//while (stack.instruction->prev != NULL)
+	//while (stack.instruction->next!= NULL)
 	//{
 		//ft_printf("%s",stack.instruction->operation);
-		//stack.instruction = stack.instruction->prev;
+		//stack.instruction = stack.instruction->next;
 	//}
 	//ft_printf("%s",stack.instruction->operation);
-}
+	//clear_all_instruction_list(&stack);
+//}
+
+//__attribute__((destructor))
+//static void destructor() {
+//system("leaks -q push_swap");
+//}

@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 09:12:47 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/04 15:21:13 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/05 13:45:06 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,18 +76,18 @@ void	stack_b_insertion_sort(int number_count, t_lists *stack)
 		{
 			while (stack->stack_b != distance.top_position)
 			{
-				ft_rb(&(stack->stack_b));
+				ft_rb(stack);
 			}
 			if (stack->stack_b->content == b_info.min)
 			{
-				push_x2y(&(stack->stack_b), &(stack->stack_a), A);
-				ft_ra(&(stack->stack_a));
+				push_x2y(&(stack->stack_b), &(stack->stack_a), A, stack);
+				ft_ra(stack);
 				b_info.min++;
 				b_info.node_count--;
 			}
 			else
 			{
-				push_x2y(&(stack->stack_b), &(stack->stack_a), A);
+				push_x2y(&(stack->stack_b), &(stack->stack_a), A, stack);
 				b_info.max--;
 				b_info.node_count--;
 			}
@@ -95,17 +95,17 @@ void	stack_b_insertion_sort(int number_count, t_lists *stack)
 		else
 		{
 			while (stack->stack_b != distance.bottom_postion)
-				ft_rrb(&(stack->stack_b));
+				ft_rrb(stack);
 			if (stack->stack_b->content == b_info.min)
 			{
-				push_x2y(&(stack->stack_b), &(stack->stack_a), A);
-				ft_ra(&(stack->stack_a));
+				push_x2y(&(stack->stack_b), &(stack->stack_a), A, stack);
+				ft_ra(stack);
 				b_info.min++;
 				b_info.node_count--;
 			}
 			else
 			{
-				push_x2y(&(stack->stack_b), &(stack->stack_a), A);
+				push_x2y(&(stack->stack_b), &(stack->stack_a), A, stack);
 				b_info.max--;
 				b_info.node_count--;
 			}

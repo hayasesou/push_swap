@@ -6,18 +6,19 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:30:11 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/02 10:32:39 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/05 13:35:33 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 # include "push_swap.h"
 
-void	stack_a_sort_3number(t_cd_list **stack_a)
+void	stack_a_sort_3number(t_lists *stack)
 {
 	int	comparison;
 	int	i;
 	int	tmp;
+	t_cd_list **stack_a = &(stack->stack_a);
 
 	if (stack_a == NULL)
 		return ;
@@ -27,7 +28,7 @@ void	stack_a_sort_3number(t_cd_list **stack_a)
 	if ((*stack_a)->next->next == (*stack_a))
 	{
 		if((*stack_a)->content > (*stack_a)->next->content)
-			ft_sa(stack_a);
+			ft_sa(stack);
 		return;
 	}
 	comparison = 0;
@@ -43,20 +44,20 @@ void	stack_a_sort_3number(t_cd_list **stack_a)
 
 	if (comparison == 0 && (*stack_a)->next->content > (*stack_a)->next->next->content)
 	{
-		ft_rra(stack_a);
-		ft_sa(stack_a);
+		ft_rra(stack);
+		ft_sa(stack);
 	}
 	else if (comparison == 0)
 		return ;
 	else if (comparison == 1 && (*stack_a)->content >(*stack_a)->next->content)
-		ft_sa(stack_a);
+		ft_sa(stack);
 	else if (comparison == 1)
-		ft_rra(stack_a);
+		ft_rra(stack);
 	else if (comparison == 2 && (*stack_a)->next->content > (*stack_a)->next->next->content)
 	{
-		ft_sa(stack_a);
-		ft_rra(stack_a);
+		ft_sa(stack);
+		ft_rra(stack);
 	}
 	else
-		ft_ra(stack_a);
+		ft_ra(stack);
 }
