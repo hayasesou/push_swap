@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:50:48 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/05 03:27:28 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/05 12:10:34 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct s_ints_info
 typedef struct s_instruction
 {
 	char				*operation;
+	struct	s_instruction		*prev;
 	struct	s_instruction		*next;
 }						t_instruction;
 
@@ -173,6 +174,14 @@ int	check_b(int av_num, t_cd_list **stack_b, int pivot);
 
 
 void debug(int av_num, t_lists *stack);
-void  clear_all_node(t_lists *stack);
+
+//list utils
+void  clear_all_stack(t_lists *stack);
+t_instruction *new_instruction(void);
+void	clear_all_instruction_list(t_lists *stack);
+void	pull_out_instruction(t_lists *stack);
+void	set_operation(t_instruction *op_node, t_operation op);
+t_instruction	*add_instruction(t_lists *stack, t_operation op);
+void	make_instructin_list(t_lists *stack, t_operation op);
 
 #endif
