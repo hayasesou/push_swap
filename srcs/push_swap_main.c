@@ -6,14 +6,14 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:27:09 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/06 00:36:32 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/07 01:09:38 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-void	check_dupulicate(int num, t_ints_info *info, int index, int *tmp);
+static void	check_duplicate(int num, t_ints_info *info, int index, int *tmp);
 
 void	store_int_info(t_ints_info *info, int ac, char **av)
 {
@@ -28,7 +28,7 @@ void	store_int_info(t_ints_info *info, int ac, char **av)
 	{
 		num = ft_atoi_push_swap(av[index]);
 		*(info->number) = num;
-		check_dupulicate(num, info, index, tmp);
+		check_duplicate(num, info, index, tmp);
 		(info->number)++;
 		(info->av_num)++;
 		index++;
@@ -37,7 +37,7 @@ void	store_int_info(t_ints_info *info, int ac, char **av)
 	coordinate_compression(info);
 }
 
-void	check_dupulicate(int num, t_ints_info *info, int index, int *tmp)
+static void	check_duplicate(int num, t_ints_info *info, int index, int *tmp)
 {
 	int	j;
 	int	count_number;
