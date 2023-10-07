@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 16:10:48 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/05 16:50:08 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/07 11:56:33 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	check_list_order(t_lists *stack, int av_num)
 		stack->stack_a = stack->stack_a->next;
 	}
 	if (i == av_num)
-		exit (0) ;
+		exit (0);
 	while (i-- > 0)
 		stack->stack_a = stack->stack_a->prev;
 }

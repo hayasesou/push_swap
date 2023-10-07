@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:27:09 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/07 01:09:38 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/07 12:09:50 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,17 @@ void	store_int_info(t_ints_info *info, int ac, char **av)
 static void	check_duplicate(int num, t_ints_info *info, int index, int *tmp)
 {
 	int	j;
-	int	count_number;
+	int	duplicate;
 
-	j = 0;
-	count_number = 0;
+	j = -1;
+	duplicate = 0;
 	info->number = tmp;
-	while (j < index)
+	while (++j < index - 1)
 	{
 		if (*(info->number) == num)
-			count_number++;
-		info->number++;
-		j++;
-	}
-	if (count_number >= 2)
 		display_error();
-	info->number -= 1;
+		info->number++;
+	}
 }
 
 void	set_stack(t_lists *stack, t_ints_info *info)
@@ -67,7 +63,7 @@ void	set_stack(t_lists *stack, t_ints_info *info)
 	free(info->number);
 }
 
-static void sort(int av_num, t_lists *stack)
+static void	sort(int av_num, t_lists *stack)
 {
 	check_list_order(stack, av_num);
 	if (av_num == 2)
@@ -103,18 +99,13 @@ int	main(int ac, char **av)
 	set_stack(&stack, &info);
 	sort(info.av_num, &stack);
 	optimize_instruction(&stack);
-	while(stack.instruction->next != NULL)
-	{
-	ft_printf("%s", stack.instruction->operation);
-		stack.instruction = stack.instruction->next;
-	}
-	ft_printf("%s", stack.instruction->operation);
+	display_instruction(&stack);
 	clear_all_stack(&stack);
 	clear_all_instruction_list(&stack);
 	return (0);
 }
 
-//__attribute__((destructor))
-//static void destructor() {
-//system("leaks -q push_swap");
-//}
+// __attribute__((destructor))
+// static void destructor() {
+// system("leaks -q push_swap");
+// }

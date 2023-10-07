@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 19:03:02 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/06 03:19:39 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/07 12:13:11 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,6 @@ void	clear_all_instruction_list(t_lists *stack)
 {
 	t_instruction	*tmp;
 
-	while (stack->instruction->prev != NULL)
-		stack->instruction = stack->instruction->prev;
 	while (stack->instruction != NULL)
 	{
 		tmp = stack->instruction->next;
@@ -155,7 +153,7 @@ void	make_instructin_list(t_lists *stack, t_operation op)
 	{
 		clear_all_instruction_list(stack);
 		clear_all_stack(stack);
-		exit (0);
+		exit (1);
 	}
 	set_operation(op_node, op);
 	if (stack->instruction == NULL)

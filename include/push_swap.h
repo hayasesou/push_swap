@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:50:48 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/07 01:08:57 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/07 11:52:51 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,6 @@ typedef enum e_operation
 	RRR,
 }			t_operation;
 
-//typedef enum e_optimize
-//{
-	//PX_PY,
-	//RX_RY,
-	//SX_SY,
-	//RRX_RRY,
-
-//}			t_optimize;
-
 typedef struct s_cd_list
 {
 	int					content;
@@ -102,14 +93,6 @@ typedef struct t_top3number
 	int	top2;
 	int	top3;
 }						t_top3number;
-
-//typedef struct s_stack_b
-//{
-	//int min;
-	//int max;
-	//int node_count;
-//}						t_stack_b_info;
-
 
 typedef struct s_stack_b
 {
@@ -157,6 +140,7 @@ void					ft_rrr(t_lists *stack);
 
 int						ft_atoi_push_swap(const char *str);
 void					display_error(void);
+void					display_instruction(t_lists	*stack);
 
 //insretion_sort
 void					stack_a_insertion_sort(int number_count,

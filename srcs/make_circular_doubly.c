@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:26:37 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/04 18:07:56 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/07 11:40:45 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,29 +43,29 @@ static void	first_node_error(t_ints_info *info)
 
 t_cd_list	*make_circular_doubly(t_ints_info *info)
 {
-	t_cd_list	*list;
+	t_cd_list	*current_list;
 	t_cd_list	*new;
-	t_cd_list	*tmp;
+	t_cd_list	*list_top;
 	int			i;
 
-	i = 0;
-	list = new_doubly();
-	if (list == NULL)
+	current_list = new_doubly();
+	if (current_list == NULL)
 		first_node_error(info);
-	list->content = *(info->number);
-	tmp = list;
+	current_list->content = *(info->number);
+	list_top = current_list;
 	(info->number)++;
+	i = 0;
 	while (i < (info->av_num) - 1)
 	{
 		new = new_doubly();
 		if (new == NULL)
-			malloc_error_handling(list, info, i + 1);
+			malloc_error_handling(current_list, info, i + 1);
 		new->content = *(info->number);
-		add_back_doubly(&list, new);
+		add_back_doubly(&current_list, new);
 		(info->number)++;
 		i++;
 	}
-	tmp->prev = list;
-	list->next = tmp;
-	return (tmp);
+	list_top->prev = current_list;
+	current_list->next = list_top;
+	return (list_top);
 }
