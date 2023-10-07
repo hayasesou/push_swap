@@ -6,14 +6,16 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 14:24:44 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/05 13:40:33 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/07 18:48:52 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static	t_cd_list	*get_position2insert(t_cd_list **stack_a,
-		t_cd_list **stack_b, int *spot, int i)
+static t_cd_list	*get_position2insert(t_cd_list **stack_a,
+										t_cd_list **stack_b,
+										int *spot,
+										int i)
 {
 	int	distance;
 
@@ -25,16 +27,20 @@ static	t_cd_list	*get_position2insert(t_cd_list **stack_a,
 	}
 	distance = *spot;
 	while (distance-- > 0)
-	(*stack_b) = (*stack_b)->prev;
+		(*stack_b) = (*stack_b)->prev;
 	return (*stack_b);
 }
-
 
 static void	from_top(int spot, t_lists *stack, t_cd_list *tmp)
 {
 	int	j;
 
 	j = -1;
+	if (spot == 0)
+	{
+		push_x2y(&(stack->stack_a), &(stack->stack_b), B, stack);
+		return ;
+	}
 	while (++j < spot)
 		ft_rb(stack);
 	push_x2y(&(stack->stack_a), &(stack->stack_b), B, stack);
@@ -59,13 +65,13 @@ static void	from_botom(int spot, int i, t_lists *stack)
 		ft_rb(stack);
 }
 
-static	void	find_first_not_top3(int number_count,
-		t_lists *stack)
+static void	find_first_not_top3(int number_count,
+								t_lists *stack)
 {
 	ft_ra(stack);
-	while (stack->stack_a->content >= number_count -3)
+	while (stack->stack_a->content >= number_count - 3)
 		ft_ra(stack);
-	push_x2y(&(stack->stack_a),&(stack->stack_b), B, stack);
+	push_x2y(&(stack->stack_a), &(stack->stack_b), B, stack);
 }
 
 void	stack_a_insertion_sort(int number_count, t_lists *stack)
@@ -84,11 +90,10 @@ void	stack_a_insertion_sort(int number_count, t_lists *stack)
 	{
 		while (stack->stack_a->content >= number_count - 3)
 			ft_ra(stack);
-		tmp = get_position2insert(&(stack->stack_a), &(stack->stack_b), &spot, i);
+		tmp = get_position2insert(&(stack->stack_a), &(stack->stack_b), &spot,
+				i);
 		j = -1;
-		if (spot == 0)
-			push_x2y(&(stack->stack_a), &(stack->stack_b), B, stack);
-		else if (spot < (i - 1) / 2)
+		if (spot < (i - 1) / 2)
 			from_top(spot, stack, tmp);
 		else
 			from_botom(spot, i, stack);

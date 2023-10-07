@@ -6,20 +6,48 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:30:11 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/05 13:35:33 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/07 19:12:28 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
 
-# include "push_swap.h"
+static void	instruction_3number(int count_grater_than_top, t_lists *stack)
+{
+	t_cd_list	**stack_a;
+
+	stack_a = &(stack->stack_a);
+	if (count_grater_than_top == 0
+		&& (*stack_a)->next->content > (*stack_a)->next->next->content)
+	{
+		ft_rra(stack);
+		ft_sa(stack);
+	}
+	else if (count_grater_than_top == 0)
+		return ;
+	else if (count_grater_than_top == 1
+			&& (*stack_a)->content > (*stack_a)->next->content)
+		ft_sa(stack);
+	else if (count_grater_than_top == 1)
+		ft_rra(stack);
+	else if (count_grater_than_top == 2
+			&& (*stack_a)->next->content > (*stack_a)->next->next->content)
+	{
+		ft_sa(stack);
+		ft_rra(stack);
+	}
+	else
+		ft_ra(stack);
+}
 
 void	stack_a_sort_3number(t_lists *stack)
 {
-	int	comparison;
-	int	i;
-	int	tmp;
-	t_cd_list **stack_a = &(stack->stack_a);
+	int comparison;
+	int i;
+	int tmp;
+	t_cd_list **stack_a;
 
+	stack_a = &(stack->stack_a);
 	if (stack_a == NULL)
 		return ;
 	i = -1;
@@ -27,9 +55,9 @@ void	stack_a_sort_3number(t_lists *stack)
 		return ;
 	if ((*stack_a)->next->next == (*stack_a))
 	{
-		if((*stack_a)->content > (*stack_a)->next->content)
+		if ((*stack_a)->content > (*stack_a)->next->content)
 			ft_sa(stack);
-		return;
+		return ;
 	}
 	comparison = 0;
 	tmp = (*stack_a)->content;
@@ -41,23 +69,5 @@ void	stack_a_sort_3number(t_lists *stack)
 	}
 	while (i-- > 0)
 		(*stack_a) = (*stack_a)->prev;
-
-	if (comparison == 0 && (*stack_a)->next->content > (*stack_a)->next->next->content)
-	{
-		ft_rra(stack);
-		ft_sa(stack);
-	}
-	else if (comparison == 0)
-		return ;
-	else if (comparison == 1 && (*stack_a)->content >(*stack_a)->next->content)
-		ft_sa(stack);
-	else if (comparison == 1)
-		ft_rra(stack);
-	else if (comparison == 2 && (*stack_a)->next->content > (*stack_a)->next->next->content)
-	{
-		ft_sa(stack);
-		ft_rra(stack);
-	}
-	else
-		ft_ra(stack);
+	instruction_3number(comparison, stack);
 }
