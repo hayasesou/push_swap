@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "push_swap.h"
+#include "push_swap.h"
 
 void	check_list_order(t_lists *stack, int av_num)
 {
@@ -19,13 +19,13 @@ void	check_list_order(t_lists *stack, int av_num)
 	i = -1;
 	while (++i < av_num)
 	{
-		if (i != av_num -1 && stack->stack_a->content + 1 !=
-			stack->stack_a->next->content)
+		if (i != av_num - 1 && stack->stack_a->content
+			+ 1 != stack->stack_a->next->content)
 			break ;
 		stack->stack_a = stack->stack_a->next;
 	}
 	if (i == av_num)
-		exit (0);
+		exit(0);
 	while (i-- > 0)
 		stack->stack_a = stack->stack_a->prev;
 }

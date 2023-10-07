@@ -12,23 +12,22 @@
 
 #include "push_swap.h"
 
-static void handle_min(t_lists *stack, int *min)
+static void	handle_min(t_lists *stack, int *min)
 {
-		if(stack->stack_a->content == *min)
-		{
-			ft_ra(stack);
-			(*min) += 1;
-		}
+	if (stack->stack_a->content == *min)
+	{
+		ft_ra(stack);
+		(*min) += 1;
+	}
 }
 
 void	push_next_block(t_lists *stack, int *min, int *count_pb)
 {
-
-		if(stack->stack_a->content == *min)
+	if (stack->stack_a->content == *min)
 		handle_min(stack, min);
-		else
-		{
+	else
+	{
 		push_x2y(&(stack->stack_a), &(stack->stack_b), B, stack);
 		(*count_pb)++;
-		}
+	}
 }

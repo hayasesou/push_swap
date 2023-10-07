@@ -27,27 +27,27 @@ t_instruction	*new_instruction(void)
 void	set_operation(t_instruction *op_node, t_operation op)
 {
 	if (op == PA)
-	op_node->operation = ft_strdup("pa\n");
+		op_node->operation = ft_strdup("pa\n");
 	else if (op == PB)
-	op_node->operation = ft_strdup("pb\n");
+		op_node->operation = ft_strdup("pb\n");
 	else if (op == SA)
-	op_node->operation = ft_strdup("sa\n");
+		op_node->operation = ft_strdup("sa\n");
 	else if (op == SB)
-	op_node->operation = ft_strdup("sb\n");
+		op_node->operation = ft_strdup("sb\n");
 	else if (op == SS)
-	op_node->operation = ft_strdup("ss\n");
+		op_node->operation = ft_strdup("ss\n");
 	else if (op == RA)
-	op_node->operation = ft_strdup("ra\n");
+		op_node->operation = ft_strdup("ra\n");
 	else if (op == RB)
-	op_node->operation = ft_strdup("rb\n");
+		op_node->operation = ft_strdup("rb\n");
 	else if (op == RR)
-	op_node->operation = ft_strdup("rr\n");
+		op_node->operation = ft_strdup("rr\n");
 	else if (op == RRA)
-	op_node->operation = ft_strdup("rra\n");
+		op_node->operation = ft_strdup("rra\n");
 	else if (op == RRB)
-	op_node->operation = ft_strdup("rrb\n");
+		op_node->operation = ft_strdup("rrb\n");
 	else if (op == RRR)
-	op_node->operation = ft_strdup("rrr\n");
+		op_node->operation = ft_strdup("rrr\n");
 }
 
 static void	add_back_instruction(t_instruction *op_node, t_lists *stack)
@@ -70,20 +70,17 @@ void	make_instructin_list(t_lists *stack, t_operation op)
 	if (op_node == NULL)
 	{
 		all_free(stack);
-		exit (1);
+		exit(1);
 	}
 	set_operation(op_node, op);
 	if (op_node->operation == NULL)
 	{
 		free(op_node);
 		all_free(stack);
-		exit (1);
+		exit(1);
 	}
 	if (stack->instruction == NULL)
 		stack->instruction = op_node;
 	else
 		add_back_instruction(op_node, stack);
 }
-
-
-

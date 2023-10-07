@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "push_swap.h"
+#include "push_swap.h"
 
-int	get_pivot(int stack_number, t_cd_list ** stack_x)
+int	get_pivot(int stack_number, t_cd_list **stack_x)
 {
 	int	i;
 	int	min;
@@ -38,10 +38,9 @@ int	get_pivot(int stack_number, t_cd_list ** stack_x)
 
 static void	set_group_id(t_lists *stack, int *group_id_max)
 {
-			stack->stack_a->group_id = *group_id_max;
-			ft_ra(stack);
+	stack->stack_a->group_id = *group_id_max;
+	ft_ra(stack);
 }
-
 
 void	stack_small_quick_sort(int av_num, t_lists *stack, int *group_id_max)
 {
@@ -51,7 +50,7 @@ void	stack_small_quick_sort(int av_num, t_lists *stack, int *group_id_max)
 	int	count_below_pivot;
 
 	push_count = 0;
-	pivot = get_pivot(av_num,&(stack->stack_a));
+	pivot = get_pivot(av_num, &(stack->stack_a));
 	count_below_pivot = check_a(av_num, &(stack->stack_a), pivot, SMALL);
 	i = -1;
 	while (++i < av_num)
@@ -98,4 +97,3 @@ void	stack_large_quick_sort(int av_num, t_lists *stack, int *group_id_max)
 	*group_id_max += 1;
 	stack_b_quick_sort(push_count, stack, group_id_max);
 }
-

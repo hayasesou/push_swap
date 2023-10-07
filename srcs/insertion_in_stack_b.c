@@ -6,14 +6,14 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 09:12:47 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/07 01:05:49 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/07 21:38:05 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "push_swap.h"
 
-static void set_disatance(t_distance *distance, t_stack_b_info *b_info, t_cd_list **stack_b)
+static void	set_disatance(t_distance *distance, t_stack_b_info *b_info,
+		t_cd_list **stack_b)
 {
 	int			i;
 	t_cd_list	*tmp;
@@ -24,13 +24,13 @@ static void set_disatance(t_distance *distance, t_stack_b_info *b_info, t_cd_lis
 	distance->from_top = 0;
 	distance->from_bottom = 0;
 	i = 0;
-
 	while (distance->from_top < b_info->node_count)
 	{
-		if ((*stack_b)->content == b_info->min || (*stack_b)->content == b_info->max)
+		if ((*stack_b)->content == b_info->min
+			|| (*stack_b)->content == b_info->max)
 		{
 			distance->top_position = (*stack_b);
-				break;
+			break ;
 		}
 		(*stack_b) = (*stack_b)->next;
 		distance->from_top++;
@@ -39,10 +39,11 @@ static void set_disatance(t_distance *distance, t_stack_b_info *b_info, t_cd_lis
 	i = 0;
 	while (distance->from_bottom < b_info->node_count)
 	{
-		if ((*stack_b)->content == b_info->min || (*stack_b)->content == b_info->max)
+		if ((*stack_b)->content == b_info->min
+			|| (*stack_b)->content == b_info->max)
 		{
 			distance->bottom_postion = (*stack_b);
-			break;
+			break ;
 		}
 		(*stack_b) = (*stack_b)->prev;
 		distance->from_bottom++;
@@ -52,50 +53,51 @@ static void set_disatance(t_distance *distance, t_stack_b_info *b_info, t_cd_lis
 
 void	stack_b_insertion_sort(int number_count, t_lists *stack)
 {
-	t_stack_b_info b_info;
-	t_distance distance;
-	int i;
+	t_stack_b_info	b_info;
+	t_distance		distance;
+	int				i;
 
 	b_info.max = INT_MIN;
 	b_info.min = INT_MAX;
 	i = -1;
-	while(++i < number_count)
+	while (++i < number_count)
 	{
 		if (stack->stack_b->content < b_info.min)
-		b_info.min = stack->stack_b->content;
+			b_info.min = stack->stack_b->content;
 		if (stack->stack_b->content > b_info.max)
-		b_info.max = stack->stack_b->content;
+			b_info.max = stack->stack_b->content;
 		stack->stack_b = stack->stack_b->next;
 	}
 	b_info.min_plusone = b_info.min + 1;
 	b_info.max_minusone = b_info.max - 1;
-
 	b_info.node_count = number_count;
-	while(stack->stack_b != NULL)
+	while (stack->stack_b != NULL)
 	{
-	set_disatance(&distance, &b_info, &(stack->stack_b));
-		if(distance.from_top <= distance.from_bottom)
+		set_disatance(&distance, &b_info, &(stack->stack_b));
+		if (distance.from_top <= distance.from_bottom)
 		{
 			while (stack->stack_b != distance.top_position)
 			{
-				if (stack->stack_b->content == b_info.min_plusone && stack->stack_b->next->content == b_info.min )
+				if (stack->stack_b->content == b_info.min_plusone
+					&& stack->stack_b->next->content == b_info.min)
 				{
 					push_x2y(&(stack->stack_b), &(stack->stack_a), A, stack);
 					push_x2y(&(stack->stack_b), &(stack->stack_a), A, stack);
 					ft_ra(stack);
 					ft_ra(stack);
 					b_info.min += 2;
-					b_info.min_plusone +=2;
+					b_info.min_plusone += 2;
 					b_info.node_count -= 2;
-					break;
+					break ;
 				}
-				else if (stack->stack_b->content == b_info.max_minusone && stack->stack_b->next->content == b_info.max)
+				else if (stack->stack_b->content == b_info.max_minusone
+						&& stack->stack_b->next->content == b_info.max)
 				{
 					ft_sb(stack);
 					push_x2y(&(stack->stack_b), &(stack->stack_a), A, stack);
 					push_x2y(&(stack->stack_b), &(stack->stack_a), A, stack);
 					b_info.max -= 2;
-					b_info.max_minusone -=2;
+					b_info.max_minusone -= 2;
 					b_info.node_count -= 2;
 					break ;
 				}
@@ -119,21 +121,7 @@ void	stack_b_insertion_sort(int number_count, t_lists *stack)
 		else
 		{
 			while (stack->stack_b != distance.bottom_postion)
-			{
-				//if (stack->stack_b->content == b_info.min_plusone && stack->stack_b->prev->content == b_info.min )
-				//{
-					//ft_rra(stack);
-					//push_x2y(&(stack->stack_b), &(stack->stack_a), A, stack);
-					//ft_rra(stack);
-					//push_x2y(&(stack->stack_b), &(stack->stack_a), A, stack);
-
-					//b_info.min +=2;
-					//b_info.min_plusone +=2;
-					//b_info.node_count -= 2;
-					//break;
-				//}
 				ft_rrb(stack);
-			}
 			if (stack->stack_b->content == b_info.min)
 			{
 				push_x2y(&(stack->stack_b), &(stack->stack_a), A, stack);

@@ -19,7 +19,7 @@ static void	shift_up(t_cd_list **list)
 	(*list) = (*list)->next;
 }
 
-void	ft_ra(t_lists  *stack)
+void	ft_ra(t_lists *stack)
 {
 	shift_up(&(stack->stack_a));
 	make_instructin_list(stack, RA);

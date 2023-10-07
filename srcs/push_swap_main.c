@@ -82,7 +82,6 @@ static void	sort(int av_num, t_lists *stack)
 		quick_sort(av_num, (stack));
 }
 
-
 int	main(int ac, char **av)
 {
 	t_lists		stack;

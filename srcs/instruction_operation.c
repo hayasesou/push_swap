@@ -22,13 +22,13 @@ void	pull_out_instruction(t_lists *stack)
 	delete_instruction_node(stack);
 	if (tmp_prev != NULL)
 	{
-	stack->instruction = tmp_prev;
-	stack->instruction->next = tmp_next;
+		stack->instruction = tmp_prev;
+		stack->instruction->next = tmp_next;
 	}
 	if (tmp_next != NULL)
 	{
-	stack->instruction = tmp_next;
-	stack->instruction->prev = tmp_prev;
+		stack->instruction = tmp_next;
+		stack->instruction->prev = tmp_prev;
 	}
 }
 
@@ -48,7 +48,7 @@ t_instruction	*add_instruction(t_lists *stack, t_operation op)
 	stack->instruction = add->next;
 	if (stack->instruction != NULL)
 	{
-	stack->instruction->prev = add;
+		stack->instruction->prev = add;
 	}
 	stack->instruction = add;
 	return (add);

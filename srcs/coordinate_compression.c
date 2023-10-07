@@ -23,7 +23,7 @@ void	coordinate_compression(t_ints_info *info)
 	if (coordinate_compression == NULL)
 	{
 		free(info->number);
-		exit (1);
+		exit(1);
 	}
 	i = -1;
 	while (++i < info->av_num)
@@ -41,12 +41,12 @@ void	coordinate_compression(t_ints_info *info)
 	info->number = coordinate_compression;
 }
 
-	//jFILE *fp = fopen("s.txt","a");
-	//jif(fp == NULL){
-		//jdprintf(2,"open error\n");
-		//jexit (1);
-	//j}
-	//jfprintf(fp,"\nargument\n");
-	//jfor(int k = 0; k < info->av_num ;k++)
-	//jfprintf(fp,"%d ",info->number[k]);
-	//jfclose(fp);
+//jFILE *fp = fopen("s.txt","a");
+//jif(fp == NULL){
+//jdprintf(2,"open error\n");
+//jexit (1);
+//j}
+//jfprintf(fp,"\nargument\n");
+//jfor(int k = 0; k < info->av_num ;k++)
+//jfprintf(fp,"%d ",info->number[k]);
+//jfclose(fp);

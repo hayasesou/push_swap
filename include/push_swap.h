@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:50:48 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/07 20:16:31 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/07 21:47:50 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,6 @@ void					coordinate_compression(t_ints_info *info);
 //
 void					check_list_order(t_lists *stack, int av_num);
 void					stack_a_sort_3number(t_lists *stack);
-void					stack_b_sort_3number(t_lists *stack);
 
 //quick_sort
 int						get_pivot(int stack_number, t_cd_list **stack_x);
@@ -171,6 +170,7 @@ int	check_a(int av_num, t_cd_list **stack_a, int pivot, t_size_a size);
 int	check_b(int av_num, t_cd_list **stack_b, int pivot);
 
 
+int	check_instruction(t_lists *stack);
 
 void debug(int av_num, t_lists *stack);
 

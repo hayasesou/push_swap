@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:30:11 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/07 19:25:51 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/07 21:40:10 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ static void	instruction_3number(int count_grater_than_top, t_lists *stack)
 static int	count_grater(t_lists *stack)
 {
 	int			stack_a_top_content;
-	t_cd_list			**stack_a;
-	int							i;
-	int						count;
+	t_cd_list	**stack_a;
+	int			i;
+	int			count;
 
 	count = 0;
 	i = -1;
@@ -62,12 +62,11 @@ static int	count_grater(t_lists *stack)
 	return (count);
 }
 
-
 void	stack_a_sort_3number(t_lists *stack)
 {
-	int comparison;
-	int i;
-	t_cd_list **stack_a;
+	int			comparison;
+	int			i;
+	t_cd_list	**stack_a;
 
 	stack_a = &(stack->stack_a);
 	if (stack_a == NULL)

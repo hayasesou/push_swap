@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "push_swap.h"
+#include "push_swap.h"
 
-static	void	handle_stack_number_under_standard(int av_num, t_lists *stack)
+static void	handle_stack_number_under_standard(int av_num, t_lists *stack)
 {
-	int tmp_group_id;
+	int	tmp_group_id;
 
 	tmp_group_id = stack->stack_b->group_id;
 	stack_b_insertion_sort(av_num, stack);
@@ -22,15 +22,14 @@ static	void	handle_stack_number_under_standard(int av_num, t_lists *stack)
 		ft_ra(stack);
 	return ;
 }
-t_cd_list *find_min_node(t_cd_list *head)
+t_cd_list	*find_min_node(t_cd_list *head)
 {
-	t_cd_list *min_node;
-	t_cd_list *current;
+	t_cd_list	*min_node;
+	t_cd_list	*current;
 
 	min_node = head;
-
 	current = head->next;
-	while(current != head)
+	while (current != head)
 	{
 		if (current->content < min_node->content)
 			min_node = current;
@@ -39,15 +38,15 @@ t_cd_list *find_min_node(t_cd_list *head)
 	return (min_node);
 }
 
-static int separate_stack_b(int pivot, t_lists *stack, int *group_id_max, int *count_above_pivot)
+static int	separate_stack_b(int pivot, t_lists *stack, int *group_id_max,
+		int *count_above_pivot)
 {
-	int count_stack_b_node;
-
+	int	count_stack_b_node;
 
 	count_stack_b_node = 0;
-	if(stack->stack_b == find_min_node(stack->stack_b))
+	if (stack->stack_b == find_min_node(stack->stack_b))
 	{
-		push_x2y(&(stack->stack_b), &(stack->stack_a),A,stack);
+		push_x2y(&(stack->stack_b), &(stack->stack_a), A, stack);
 		ft_ra(stack);
 		count_above_pivot--;
 	}
@@ -65,18 +64,19 @@ static int separate_stack_b(int pivot, t_lists *stack, int *group_id_max, int *c
 	return (count_stack_b_node);
 }
 
-static void set_next_block2stack_b(t_lists *stack, int group_id, int *group_id_max)
+static void	set_next_block2stack_b(t_lists *stack, int group_id,
+		int *group_id_max)
 {
-	int count_pb;
-	int min;
-	t_cd_list *tmp;
+	int			count_pb;
+	int			min;
+	t_cd_list	*tmp;
 
 	min = INT_MAX;
 	count_pb = 0;
 	tmp = stack->stack_a;
-	while(stack->stack_a->group_id == group_id +1)
+	while (stack->stack_a->group_id == group_id + 1)
 	{
-		if(stack->stack_a->content < min)
+		if (stack->stack_a->content < min)
 			min = stack->stack_a->content;
 		stack->stack_a = stack->stack_a->next;
 	}
@@ -91,8 +91,8 @@ void	stack_b_quick_sort(int av_num, t_lists *stack, int *group_id_max)
 {
 	int	pivot;
 	int	i;
-	int count_stack_b_node;
-	int group_id;
+	int	count_stack_b_node;
+	int	group_id;
 	int	count_above_pivot;
 
 	if (av_num < 27)
@@ -104,25 +104,25 @@ void	stack_b_quick_sort(int av_num, t_lists *stack, int *group_id_max)
 	i = -1;
 	count_stack_b_node = 0;
 	count_above_pivot = 0;
-	while(++i < av_num)
+	while (++i < av_num)
 	{
 		if (stack->stack_b->content > pivot)
-		count_above_pivot++;
+			count_above_pivot++;
 		stack->stack_b = stack->stack_b->next;
 	}
 	i = -1;
 	while (++i < av_num)
 	{
-		count_stack_b_node += separate_stack_b(pivot, stack, group_id_max, &count_above_pivot);
+		count_stack_b_node += separate_stack_b(pivot, stack, group_id_max,
+				&count_above_pivot);
 		if (count_above_pivot == 0)
-			break;
+			break ;
 	}
 	group_id = *group_id_max;
 	*group_id_max += 1;
 	stack_b_quick_sort(count_stack_b_node, stack, group_id_max);
 	set_next_block2stack_b(stack, group_id, group_id_max);
 }
-
 
 void	quick_sort(int av_num, t_lists *stack)
 {

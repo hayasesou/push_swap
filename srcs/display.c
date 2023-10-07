@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "push_swap.h"
 
 void	display_error(void)
@@ -19,9 +18,9 @@ void	display_error(void)
 	exit(1);
 }
 
-void	display_instruction(t_lists	*stack)
+void	display_instruction(t_lists *stack)
 {
-	t_instruction *first_instruction;
+	t_instruction	*first_instruction;
 
 	first_instruction = stack->instruction;
 	while (stack->instruction != NULL)
