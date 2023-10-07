@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:50:48 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/07 17:12:56 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/07 18:04:03 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,7 @@ void	pull_out_instruction(t_lists *stack);
 void	set_operation(t_instruction *op_node, t_operation op);
 t_instruction	*add_instruction(t_lists *stack, t_operation op);
 void	make_instructin_list(t_lists *stack, t_operation op);
+void	optimize_push(t_lists *stack);
 void	optimize_instruction(t_lists *stack);
 
 #endif
