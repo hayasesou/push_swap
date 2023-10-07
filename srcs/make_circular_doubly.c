@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 09:26:37 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/07 11:40:45 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/08 02:43:03 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	malloc_error_handling(t_cd_list *list, t_ints_info *info,
 	i = 0;
 	while (i < created_node_num)
 	{
-		tmp = list->next;
+		tmp = list->prev;
 		free(list);
 		list = tmp;
 		i++;

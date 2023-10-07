@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:32:59 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/07 21:59:30 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/07 22:02:14 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static int	get_count_below(int av_num, int pivot, t_cd_list **stack_a)
 	}
 	return (count_below_pivot);
 }
-
 
 static int	get_count_above(int av_num, int pivot, t_cd_list **stack_a)
 {

@@ -7,7 +7,9 @@ M_FILES =	new_doubly.c add_back_doubly.c make_circular_doubly.c\
 			quick_sort.c insertion_in_stack_b.c \
 			small_large_quick.c push_utils.c  list_utils.c\
 			free.c instruction_operation.c optimize.c stack_a_3number.c\
-			optimize_set_next_block2stack_b.c check_instruction_list.c
+			optimize_set_next_block2stack_b.c check_instruction_list.c\
+			set_distance.c stack_b_quick.c helper_stack_binsertion.c\
+			swap_process.c
 
 LIBFT_DIR = ./libft
 LIBFT = ft

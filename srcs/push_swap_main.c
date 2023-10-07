@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:27:09 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/07 18:50:22 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/08 02:40:12 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int	main(int ac, char **av)
 	return (0);
 }
 
-//__attribute__((destructor))
-//static void destructor() {
-//system("leaks -q push_swap");
-//}
+// __attribute__((destructor))
+// static void destructor() {
+// system("leaks -q push_swap");
+// }

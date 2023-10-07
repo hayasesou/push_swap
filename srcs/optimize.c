@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 18:02:51 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/07 21:45:32 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/07 22:01:40 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,46 +78,10 @@ static void	optimize_rbparrb(t_lists *stack)
 	pull_out_instruction(stack);
 }
 
-//void	optimize_instruction(t_lists *stack)
-//{
-//t_instruction	*first;
-
-//first = stack->instruction;
-//while (stack->instruction != NULL)
-//{
-//if (!(stack->instruction->next && stack->instruction->next->next
-//&& stack->instruction->next->next->next))
-//break ;
-//optimize_push(stack);
-//if (!(stack->instruction->next && stack->instruction->next->next
-//&& stack->instruction->next->next->next))
-//break ;
-//if (ft_strncmp(stack->instruction->next->operation, "ra\n", 3) == 0
-//&& ft_strncmp(stack->instruction->next->next->operation, "rb\n",
-//3) == 0)
-//{
-//optimize_rarb(stack);
-//continue ;
-//}
-//if (ft_strncmp(stack->instruction->next->operation, "rb\n", 3) == 0
-//&& ft_strncmp(stack->instruction->next->next->operation, "pa\n",
-//3) == 0
-//&& ft_strncmp(stack->instruction->next->next->next->operation,
-//"rrb\n", 3) == 0)
-//{
-//optimize_rbparrb(stack);
-//continue ;
-//}
-//stack->instruction = stack->instruction->next;
-//}
-//stack->instruction = first;
-//}
-
 void	optimize_instruction(t_lists *stack)
 {
 	t_instruction	*first;
 
-	// t_instruction	*ins;
 	first = stack->instruction;
 	while (stack->instruction != NULL)
 	{

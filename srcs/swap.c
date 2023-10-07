@@ -6,13 +6,13 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 19:08:46 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/07 21:41:12 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/08 02:27:15 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	make_tmp_lists(t_cd_list *current, t_cd_list *second,
+static	void	make_tmp_lists(t_cd_list *current, t_cd_list *second,
 		t_cd_list **list)
 {
 	current->next = (*list)->next;
@@ -23,7 +23,7 @@ static void	make_tmp_lists(t_cd_list *current, t_cd_list *second,
 	(*list) = (*list)->prev;
 }
 
-static void	set_ptr(t_cd_list **list, t_cd_list *place, t_cd_list *ptr,
+static	void	set_ptr(t_cd_list **list, t_cd_list *place, t_cd_list *ptr,
 		int direction)
 {
 	(*list) = place;
@@ -48,33 +48,4 @@ void	swap_top_2(t_cd_list **list)
 	set_ptr(list, second.prev, current.next, PREV);
 	set_ptr(list, second.next, second.prev, PREV);
 	(*list) = current.next;
-}
-
-void	ft_sa(t_lists *stack)
-{
-	t_cd_list	**stack_a;
-
-	stack_a = &(stack->stack_a);
-	if (*stack_a == NULL || (*stack_a)->next == (*stack_a))
-		return ;
-	swap_top_2(stack_a);
-	make_instructin_list(stack, SA);
-}
-
-void	ft_sb(t_lists *stack)
-{
-	t_cd_list	**stack_b;
-
-	stack_b = &(stack->stack_b);
-	if (*stack_b == NULL || (*stack_b)->next == (*stack_b))
-		return ;
-	swap_top_2(stack_b);
-	make_instructin_list(stack, SB);
-}
-
-void	ft_ss(t_lists *stack)
-{
-	swap_top_2(&(stack->stack_a));
-	swap_top_2(&(stack->stack_b));
-	make_instructin_list(stack, SS);
 }
