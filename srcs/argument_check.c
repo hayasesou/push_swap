@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 20:01:02 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/09/17 11:55:59 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/08 04:44:23 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	ft_atoi_push_swap(const char *str)
 		display_error();
 	while (('\t' <= *str && *str <= '\r') || *str == ' ')
 		str++;
+	if (*str == '\0')
+		display_error();
 	if (*str == '-')
 	{
 		sign *= -1;
@@ -33,6 +35,8 @@ int	ft_atoi_push_swap(const char *str)
 	}
 	else if (*str == '+')
 		str++;
+	if (('\t' <= *str && *str <= '\r') || *str == ' ' || *str == '\0')
+		display_error();
 	num = get_number(&str, sign);
 	isinvalid_argument(str);
 	return ((int)(num * sign));

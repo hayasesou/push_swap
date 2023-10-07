@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 11:48:31 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/07 12:04:58 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/08 04:34:51 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	display_error(void)
 {
-	ft_printf("Error\n");
+	ft_putendl_fd("Error", 2);
 	exit(1);
 }
 
