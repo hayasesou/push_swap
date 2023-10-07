@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 01:45:56 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/05 22:44:13 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/07 19:39:11 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,13 @@ int	get_pivot(int stack_number, t_cd_list ** stack_x)
 	return (ret);
 }
 
+static void	set_group_id(t_lists *stack, int *group_id_max)
+{
+			stack->stack_a->group_id = *group_id_max;
+			ft_ra(stack);
+}
+
+
 void	stack_small_quick_sort(int av_num, t_lists *stack, int *group_id_max)
 {
 	int	pivot;
@@ -58,10 +65,7 @@ void	stack_small_quick_sort(int av_num, t_lists *stack, int *group_id_max)
 				break ;
 		}
 		else
-		{
-			stack->stack_a->group_id = *group_id_max;
-			ft_ra(stack);
-		}
+			set_group_id(stack, group_id_max);
 	}
 	*group_id_max += 1;
 	stack_b_quick_sort(push_count, stack, group_id_max);
@@ -89,10 +93,7 @@ void	stack_large_quick_sort(int av_num, t_lists *stack, int *group_id_max)
 				break ;
 		}
 		else
-		{
-			stack->stack_a->group_id = *group_id_max;
-			ft_ra(stack);
-		}
+			set_group_id(stack, group_id_max);
 	}
 	*group_id_max += 1;
 	stack_b_quick_sort(push_count, stack, group_id_max);

@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shift_up.c                                         :+:      :+:    :+:   */
+/*   optimize_set_next_block2stack_b.c                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 22:30:44 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/07 19:50:53 by hfukushi         ###   ########.fr       */
+/*   Created: 2023/10/07 20:02:06 by hfukushi          #+#    #+#             */
+/*   Updated: 2023/10/07 20:53:03 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	shift_up(t_cd_list **list)
+static void handle_min(t_lists *stack, int *min)
 {
-	if (*list == NULL)
-		return ;
-	(*list) = (*list)->next;
+		if(stack->stack_a->content == *min)
+		{
+			ft_ra(stack);
+			(*min) += 1;
+		}
 }
 
-void	ft_ra(t_lists  *stack)
+void	push_next_block(t_lists *stack, int *min, int *count_pb)
 {
-	shift_up(&(stack->stack_a));
-	make_instructin_list(stack, RA);
-}
 
-void	ft_rb(t_lists *stack)
-{
-	shift_up(&(stack->stack_b));
-	make_instructin_list(stack, RB);
-}
-
-void	ft_rr(t_lists *stack)
-{
-	shift_up(&(stack->stack_a));
-	shift_up(&(stack->stack_a));
-	make_instructin_list(stack, RR);
+		if(stack->stack_a->content == *min)
+		handle_min(stack, min);
+		else
+		{
+		push_x2y(&(stack->stack_a), &(stack->stack_b), B, stack);
+		(*count_pb)++;
+		}
 }
