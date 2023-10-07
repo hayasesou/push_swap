@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 14:24:44 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/07 18:48:52 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/08 02:59:22 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static t_cd_list	*get_position2insert(t_cd_list **stack_a,
 	return (*stack_b);
 }
 
-static void	from_top(int spot, t_lists *stack, t_cd_list *tmp)
+static void	a_from_top(int spot, t_lists *stack, t_cd_list *tmp)
 {
 	int	j;
 
@@ -52,7 +52,7 @@ static void	from_top(int spot, t_lists *stack, t_cd_list *tmp)
 		ft_rb(stack);
 }
 
-static void	from_botom(int spot, int i, t_lists *stack)
+static void	a_from_botom(int spot, int i, t_lists *stack)
 {
 	int	j;
 
@@ -94,9 +94,9 @@ void	stack_a_insertion_sort(int number_count, t_lists *stack)
 				i);
 		j = -1;
 		if (spot < (i - 1) / 2)
-			from_top(spot, stack, tmp);
+			a_from_top(spot, stack, tmp);
 		else
-			from_botom(spot, i, stack);
+			a_from_botom(spot, i, stack);
 	}
 	stack_a_sort_3number(stack);
 	while (stack->stack_b != NULL)
