@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:27:09 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/07 12:09:50 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/07 16:17:16 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,13 @@ static void	sort(int av_num, t_lists *stack)
 		return ;
 	}
 	else if	(av_num < 10)
+	{
 		stack_a_insertion_sort(av_num, (stack));
+		// display_instruction(stack);
+		// clear_all_stack(stack);
+		// clear_all_instruction_list(stack);
+		// exit (0);
+	}
 	else
 		quick_sort(av_num, (stack));
 }

@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 19:03:02 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/07 12:13:11 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/07 16:28:55 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,12 +216,14 @@ void	optimize_instruction(t_lists *stack)
 	first = stack->instruction;
 	while(stack->instruction != NULL)
 	{
-		if (stack->instruction->next && stack->instruction->next->next && stack->instruction->next->next->next)
-		;
-		else
-		break;
+		if (!(stack->instruction->next && stack->instruction->next->next && stack->instruction->next->next->next))
+			break;
 
 		optimize_pxpb(stack);
+
+		if (!(stack->instruction->next && stack->instruction->next->next && stack->instruction->next->next->next))
+			break;
+
 		if(ft_strncmp(stack->instruction->next->operation, "ra\n", 3) == 0 && ft_strncmp(stack->instruction->next->next->operation ,"rb\n", 3) == 0)
 		{
 			add_instruction(stack, RR);

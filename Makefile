@@ -1,11 +1,11 @@
 NAME = push_swap
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror -g
 M_FILES =	new_doubly.c add_back_doubly.c make_circular_doubly.c\
 			swap.c push.c shift_up.c shift_down.c push_swap_main.c\
 			argument_check.c display.c insertion_in_stack_a.c\
 			coordinate_compression.c check_list_order.c\
 			quick_sort.c insertion_in_stack_b.c stack_b_3number.c\
-			small_large_quick.c push_utils.c debug.c list_utils.c\
+			small_large_quick.c push_utils.c  list_utils.c\
 
 LIBFT_DIR = ./libft
 LIBFT = ft
