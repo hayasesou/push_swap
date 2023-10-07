@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 13:50:48 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/07 11:52:51 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/07 17:12:56 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,7 +174,9 @@ int	check_b(int av_num, t_cd_list **stack_b, int pivot);
 void debug(int av_num, t_lists *stack);
 
 //list utils
+void	all_free(t_lists *stack);
 void  clear_all_stack(t_lists *stack);
+void delete_instruction_node(t_lists *stack_x);
 t_instruction *new_instruction(void);
 void	clear_all_instruction_list(t_lists *stack);
 void	pull_out_instruction(t_lists *stack);

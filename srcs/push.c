@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 14:59:17 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/05 13:24:10 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/07 16:48:51 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,6 @@ void	push_x2y(t_cd_list **x, t_cd_list **y, int type, t_lists *stack)
 	push_x(y, get);
 	if (type == A)
 		make_instructin_list(stack, PA);
-		// ft_printf("pa\n");
 	if (type == B)
 		make_instructin_list(stack, PB);
-		// ft_printf("pb\n");
 }

@@ -6,7 +6,7 @@
 /*   By: hfukushi <hfukushi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:27:09 by hfukushi          #+#    #+#             */
-/*   Updated: 2023/10/07 16:17:16 by hfukushi         ###   ########.fr       */
+/*   Updated: 2023/10/07 17:18:29 by hfukushi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	check_duplicate(int num, t_ints_info *info, int index, int *tmp)
 	while (++j < index - 1)
 	{
 		if (*(info->number) == num)
-		display_error();
+			display_error();
 		info->number++;
 	}
 }
@@ -77,13 +77,7 @@ static void	sort(int av_num, t_lists *stack)
 		return ;
 	}
 	else if	(av_num < 10)
-	{
 		stack_a_insertion_sort(av_num, (stack));
-		// display_instruction(stack);
-		// clear_all_stack(stack);
-		// clear_all_instruction_list(stack);
-		// exit (0);
-	}
 	else
 		quick_sort(av_num, (stack));
 }
@@ -106,12 +100,11 @@ int	main(int ac, char **av)
 	sort(info.av_num, &stack);
 	optimize_instruction(&stack);
 	display_instruction(&stack);
-	clear_all_stack(&stack);
-	clear_all_instruction_list(&stack);
+	all_free(&stack);
 	return (0);
 }
 
-// __attribute__((destructor))
-// static void destructor() {
-// system("leaks -q push_swap");
-// }
+//__attribute__((destructor))
+//static void destructor() {
+//system("leaks -q push_swap");
+//}
