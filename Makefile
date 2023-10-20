@@ -30,7 +30,7 @@ $(NAME): $(OBJECTS)
 		make -C $(PRINTF_DIR)
 		$(CC) $(CFLAGS) $(INCLUDE) $(LDFLAGS) $(OBJECTS) -o $@
 
-.c.o: $(OBJECTS)
+.c.o: 
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 clean:
